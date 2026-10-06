@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Pai Thiao: Thai for the Road</title>
+<meta name="description" content="Learn travel Thai one stop at a time, from Suvarnabhumi Airport to Chiang Mai. Free, no sign-up, no ads. Available in English and Korean.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0E5E5B">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=1">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./">Pai Thiao <span class="th">ไปเที่ยว</span></a>
+    <div class="right">
+      <nav><a href="#stretches" data-i18n="navStr">Stretches</a><a href="phrasebook/" data-i18n="navPb">Phrasebook</a><a href="#passport" data-i18n="navPass">My passport</a></nav>
+      <button class="speaker-btn" id="speaker" type="button"></button>
+      <button class="lang-btn" id="lang" type="button">한국어</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+     <div class="hero-grid">
+      <div>
+      <h1>Pai Thiao</h1>
+      <p class="th-title">ไปเที่ยว</p>
+      <p class="sub" data-i18n="sub">"Let's go traveling." Ride from Suvarnabhumi one stop at a time and learn the Thai you will actually use in Thailand.</p>
+      <div class="actions">
+        <a class="btn go" href="stretch-1/?lesson=1" data-i18n="start">Start the trip</a>
+        <a class="btn" href="#stretches" data-i18n="pick">Choose a stretch</a>
+      </div>
+      </div>
+      <div class="trio" role="img" aria-label="Mali the Siamese cat, Chang the elephant, and Tukkae the gecko" data-alt-ko="샴고양이 말리, 코끼리 창, 도마뱀 뚝깨">
+        <img src="assets/chars/mali.svg" alt=""><img src="assets/chars/chang.svg" alt=""><img src="assets/chars/tukkae.svg" alt="">
+      </div>
+     </div>
+      <div class="route"><svg viewBox="-60 0 1110 180" role="img" aria-label="The route in seven stretches, from Suvarnabhumi Airport to Don Mueang Airport">
+  <path d="M 50 110 Q 114 80 179 95 Q 243 130 307 120 Q 371 88 436 100 Q 500 122 564 100 Q 629 86 693 115 Q 757 124 821 90 Q 886 76 950 105" fill="none" stroke="#D8CEBE" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 50 110 Q 114 80 179 95 Q 243 130 307 120 Q 371 88 436 100 Q 500 122 564 100 Q 629 86 693 115 Q 757 124 821 90 Q 886 76 950 105" fill="none" stroke="#E3A21A" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+  <circle cx="50" cy="110" r="9" fill="#0E5E5B" stroke="#0E5E5B" stroke-width="3"/><text x="50" y="86" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Suvarnabhumi</text>
+  <circle cx="179" cy="95" r="7" fill="#0E5E5B" stroke="#0E5E5B" stroke-width="3"/><text x="179" y="131" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Phaya Thai</text>
+  <circle cx="307" cy="120" r="7" fill="#0E5E5B" stroke="#0E5E5B" stroke-width="3"/><text x="307" y="96" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Wat Pho</text>
+  <circle cx="436" cy="100" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="436" y="136" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Conference</text>
+  <circle cx="564" cy="100" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="564" y="76" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Ayutthaya</text>
+  <circle cx="693" cy="115" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="693" y="151" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Sukhothai</text>
+  <circle cx="821" cy="90" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="821" y="66" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Chiang Mai</text>
+  <circle cx="950" cy="105" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="950" y="141" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Don Mueang</text>
+  <g transform="translate(6 110) rotate(90)"><path d="M0 -16 L4 -4 L16 2 L16 6 L4 3 L3 12 L7 15 L7 18 L0 16 L-7 18 L-7 15 L-3 12 L-4 3 L-16 6 L-16 2 L-4 -4 Z" fill="#E3A21A" stroke="#23201C" stroke-width="1.4" stroke-linejoin="round"/></g>
+  <g transform="translate(994 105) rotate(90)"><path d="M0 -16 L4 -4 L16 2 L16 6 L4 3 L3 12 L7 15 L7 18 L0 16 L-7 18 L-7 15 L-3 12 L-4 3 L-16 6 L-16 2 L-4 -4 Z" fill="#0E5E5B" stroke="#23201C" stroke-width="1.4" stroke-linejoin="round"/></g>
+</svg></div>
+    </div>
+
+    <section id="stretches" aria-labelledby="t-str">
+      <h2 id="t-str" data-i18n="hStr">Seven stretches</h2>
+      <p class="lead" data-i18n="leadStr">From the moment you land at Suvarnabhumi to your flight home from Don Mueang, split into seven stretches. Each one teaches what you will really run into on that part of the trip, and every lesson you finish earns a stamp in your passport.</p>
+      <ol class="tramos" id="tramos"></ol>
+    </section>
+
+    <section aria-labelledby="t-rooms">
+      <h2 id="t-rooms" data-i18n="hRooms">Practice rooms</h2>
+      <p class="lead" data-i18n="leadRooms">Alongside the main route: something to carry in your pocket, and a little every day.</p>
+      <div class="two">
+        <a class="room" href="phrasebook/"><h3><span data-i18n="r1h">Pocket phrasebook</span> <span class="tag open" data-i18n="open">Open</span></h3><p data-i18n="r1p">Every phrase from the open lessons on one page, searchable, with sound. Keep it open on your phone in a taxi or at a food stall.</p></a>
+        <div class="room"><h3><span data-i18n="r2h">Today's five</span> <span class="tag" data-i18n="soon">Coming soon</span></h3><p data-i18n="r2p">Hear five phrases from lessons you finished and pick what they mean. Phrases you miss come back the next day.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-friends">
+      <h2 id="t-friends" data-i18n="hFriends">Travel companions</h2>
+      <p class="lead" data-i18n="leadFriends">Three Thai friends take turns helping you along the way.</p>
+      <div class="friends">
+        <div class="friend"><img class="full" src="assets/chars/mali.svg" alt=""><div><h3 data-i18n="f1h">Mali, the Siamese cat</h3><p data-i18n="f1p">Named after the jasmine flower, mà-lí. Sharp ears, so she looks after pronunciation and tones.</p></div></div>
+        <div class="friend"><img class="full" src="assets/chars/chang.svg" alt=""><div><h3 data-i18n="f2h">Chang, the elephant</h3><p data-i18n="f2p">Thailand's national animal. Patient and never in a hurry; when you miss something, he tells you why.</p></div></div>
+        <div class="friend"><img class="full" src="assets/chars/tukkae.svg" alt=""><div><h3 data-i18n="f3h">Tukkae, the gecko</h3><p data-i18n="f3p">The tokay gecko is named for its own call, "tuk-kae!". He clings to every wall in town and brings you stories about each stop.</p></div></div>
+      </div>
+    </section>
+
+    <section id="passport" aria-labelledby="t-pass">
+      <h2 id="t-pass" data-i18n="hPass">My passport</h2>
+      <p class="lead" data-i18n="leadPass">Finish a lesson and get a stamp. The lotus petals show how many points you earned, up to three.</p>
+      <div class="passport" id="passbook"></div>
+    </section>
+
+    <section id="guide" class="guide" aria-labelledby="t-guide">
+      <h2 id="t-guide" data-i18n="hGuide">How it works</h2>
+      <div class="guide-grid">
+        <div><h3 data-i18n="g1h">One lesson a day, ten minutes</h3>
+      <p data-i18n="g1p">Each lesson goes: listen, pick what you heard, say it, complete the phrase, get your stamp. If you did not earn all three lotuses, ride the same lesson again tomorrow.</p></div>
+        <div><h3 data-i18n="g2h">Your polite ending</h3>
+      <p data-i18n="g2p">Thai speakers end most sentences with khráp (men) or khâ (women). Tap the yellow button at the top to choose yours. Every phrase on the site, and the word for "I", switches with it.</p></div>
+        <div><h3 data-i18n="g3h">Reading the romanization</h3>
+      <p data-i18n="g3p">Thai script appears with a romanization that marks the tone: à low, â falling, á high, ǎ rising, no mark for mid. In Korean view you also get a Hangul hint, but trust your ears over the letters.</p></div>
+        <div><h3 data-i18n="g4h">The Thai of Bangkok</h3>
+      <p data-i18n="g4p">Lessons follow standard central Thai. Sounds come from your device's Thai (th-TH) voice; recorded voices will be added over time. A slow button in every lesson helps with tones.</p></div>
+        <div><h3 data-i18n="g5h">Speaking practice works best in Chrome</h3>
+      <p data-i18n="g5p">Checking what you say works best in Chrome, Edge, and Chrome on Android. Machine ears struggle with tones, so treat it as a friendly check, not a judge.</p></div>
+        <div><h3 data-i18n="g6h">No sign-up, no ads</h3>
+      <p data-i18n="g6p">Progress is saved only in this browser on this device. If you switch devices, your progress stays behind.</p></div>
+      </div>
+    </section>
+
+    <section id="coffee" aria-labelledby="t-coffee">
+      <div class="coffee">
+        <svg class="cup" viewBox="0 0 72 72" aria-hidden="true"><path d="M14 26 H50 V44 Q50 58 32 58 Q14 58 14 44 Z" fill="#E3A21A" stroke="#23201C" stroke-width="2.5" stroke-linejoin="round"/><path d="M50 30 Q62 30 62 38 Q62 46 50 46" fill="none" stroke="#23201C" stroke-width="2.5"/><path d="M10 62 H54" stroke="#23201C" stroke-width="2.5" stroke-linecap="round"/><path d="M24 20 Q20 14 24 8 M33 20 Q29 14 33 8 M42 20 Q38 14 42 8" fill="none" stroke="#655E55" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C28 47 25 43 26 38 C29 40 31 44 32 50 Z M32 50 C36 47 39 43 38 38 C35 40 33 44 32 50 Z M32 49 C30 44 30 38 32 33 C34 38 34 44 32 49 Z" fill="#fff" stroke="#23201C" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        <div>
+          <h2 id="t-coffee" data-i18n="cofH">Support Pai Thiao with a coffee</h2>
+          <p data-i18n="cofP">Pai Thiao is free for everyone, with no accounts, ads, or payments. If it has helped you on your trip, you can thank the maker with a coffee. Every gift goes only toward keeping the site running and growing.</p>
+          <a class="btn go" href="https://buymeacoffee.com/henryyu" target="_blank" rel="noopener">Buy Me a Coffee</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="links"><span><span data-i18n="foot">Pai Thiao. Made by</span> <a href="mailto:hyeonhoyu@gmail.com">Dr. Henry Yu</a></span><a href="https://buymeacoffee.com/henryyu" target="_blank" rel="noopener">Buy Me a Coffee</a></div></footer>
+</div>
+<script src="assets/common.js?v=1"></script>
+<script src="assets/data.js?v=1"></script>
+<script src="assets/stretch-1-lessons.js?v=1"></script>
+<script src="assets/stretch-2-lessons.js?v=1"></script>
+<script>
+  const KO = {
+ "navStr": "구간",
+ "navPb": "회화 수첩",
+ "navPass": "나의 여권",
+ "sub": "\"여행 가자\"라는 뜻이에요. 수완나품 공항에서 한 정거장씩, 태국 여행에서 바로 쓰는 태국어를 배워요.",
+ "start": "여행 시작하기",
+ "pick": "구간 고르기",
+ "hStr": "일곱 구간",
+ "leadStr": "수완나품 공항에 내리는 순간부터 돈므앙 공항에서 집으로 돌아가는 날까지를 일곱 구간으로 나눴어요. 구간마다 그 여정에서 실제로 마주칠 상황을 배우고, 과를 마칠 때마다 여권에 도장을 받아요.",
+ "open": "열림",
+ "soon": "준비 중",
+ "hRooms": "연습실",
+ "leadRooms": "본 과정 옆에서, 주머니에 넣고 다닐 것과 매일 조금씩 할 것.",
+ "r1h": "회화 수첩",
+ "r1p": "열린 과의 표현을 한 페이지에 모았어요. 검색할 수 있고 소리도 나요. 택시나 노점에서 휴대전화로 열어 두고 쓰세요.",
+ "r2h": "오늘의 다섯 마디",
+ "r2p": "마친 과의 표현 다섯 개를 듣고 뜻을 골라요. 틀린 표현은 다음 날 다시 나와요.",
+ "hFriends": "여행 친구",
+ "leadFriends": "태국 친구 셋이 번갈아 여정을 도와줘요.",
+ "f1h": "말리, 샴고양이",
+ "f1p": "재스민 꽃 mà-lí에서 따온 이름이에요. 귀가 밝아서 발음과 성조를 맡아요.",
+ "f2h": "창, 코끼리",
+ "f2p": "태국을 상징하는 동물이에요. 참을성이 많고 서두르지 않아요. 틀리면 왜 틀렸는지 알려 줘요.",
+ "f3h": "뚝깨, 도마뱀",
+ "f3p": "토케이 도마뱀붙이는 \"뚝깨!\" 하고 우는 소리에서 이름이 왔어요. 동네 벽마다 붙어 있다가 정거장마다 이야기를 들려줘요.",
+ "hPass": "나의 여권",
+ "leadPass": "과를 마치면 도장을 받아요. 연꽃잎은 그 과에서 받은 점수로, 최대 세 개예요.",
+ "hGuide": "배우는 방법",
+ "g1h": "하루 한 과, 10분",
+ "g1p": "한 과는 소리 듣기, 듣고 고르기, 따라 말하기, 빈칸 채우기, 도장 받기 순서로 가요. 연꽃을 세 개 다 받지 못했다면 다음 날 같은 과를 다시 해도 좋아요.",
+ "g2h": "나의 공손 어미",
+ "g2p": "태국어는 대부분의 문장 끝에 khráp(남성)이나 khâ(여성)를 붙여요. 위쪽 노란 버튼으로 내 어미를 고르면 사이트의 모든 표현과 \"나\"라는 말이 함께 바뀌어요.",
+ "g3h": "로마자 읽는 법",
+ "g3p": "태국 글자와 함께 성조를 표시한 로마자가 나와요. à 낮게, â 떨어지게, á 높게, ǎ 올라가게, 표시가 없으면 평평하게. 한국어 화면에서는 한글 발음 힌트도 보이지만, 글자보다 귀를 믿으세요.",
+ "g4h": "방콕에서 쓰는 태국어",
+ "g4p": "표준 중부 태국어를 기준으로 해요. 기기의 태국어(th-TH) 음성으로 소리를 내고, 녹음한 목소리는 차례로 늘려 갈 예정이에요. 수업마다 있는 천천히 버튼이 성조 듣기를 도와줘요.",
+ "g5h": "따라 말하기는 크롬에서",
+ "g5p": "말한 소리를 확인하는 기능은 크롬, 엣지, 안드로이드 크롬에서 가장 잘 돼요. 기계는 성조에 서툴러서, 채점이라기보다 친구의 확인 정도로 생각해 주세요.",
+ "g6h": "가입도 광고도 없어요",
+ "g6p": "진도는 지금 쓰는 기기의 브라우저에만 저장돼요. 기기를 바꾸면 진도가 따라가지 않아요.",
+ "foot": "Pai Thiao. 만든 사람",
+ "cofH": "커피 한 잔으로 Pai Thiao를 응원해 주세요",
+ "cofP": "Pai Thiao는 가입도 광고도 결제도 없이 누구에게나 무료입니다. 태국 여행에 도움이 되었다면 운영자에게 커피 한 잔으로 마음을 전해 주세요. 전해진 마음은 온전히 웹사이트 유지와 발전을 위해서만 쓰입니다."
+};
+  const ordKo = ['첫째', '둘째', '셋째', '넷째', '다섯째', '여섯째', '일곱째'];
+  const ordEn = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh'];
+  function render() {
+    PT.applyI18n(KO);
+    const L = PT.L, T = p => PT.R(L(p[0], p[1]));
+    const trio = document.querySelector('.trio');
+    if (!trio.dataset.altEn) trio.dataset.altEn = trio.getAttribute('aria-label');
+    trio.setAttribute('aria-label', L(trio.dataset.altEn, trio.dataset.altKo));
+    document.title = L('Pai Thiao: Thai for the Road', 'Pai Thiao - 여행하며 배우는 태국어');
+    document.getElementById('tramos').innerHTML = PT_STRETCHES.map(s => {
+      const name = L(s.en, s.ko);
+      const done = s.lessons ? s.lessons.filter(e => PT.getStamp(s.n + '-' + e.n)).length : 0;
+      const tag = s.open ? `<span class="tag open">${done ? L(done + ' of 8 stamped', '도장 ' + done + '/8') : L('Open', '열림')}</span>` : `<span class="tag">${L('Coming soon', '준비 중')}</span>`;
+      return `<li class="${s.open ? 'open' : ''}"><div class="name">${s.open ? `<a href="stretch-${s.n}/">${name}</a>` : name}${tag}</div><div class="what">${T(s.what)}</div></li>`;
+    }).join('');
+    document.getElementById('passbook').innerHTML = PT_STRETCHES.filter(s => s.open).map(s => {
+      const all = s.lessons.every(e => PT.getStamp(s.n + '-' + e.n));
+      return `<header><strong>${L(ordEn[s.n - 1] + ' stretch', ordKo[s.n - 1] + ' 구간')}</strong><span>${L(s.en, s.ko)}${all ? L(' (completed)', ' (완주)') : ''}</span></header>
+        <div class="sellos">${s.lessons.map(e => {
+          const st = PT.getStamp(s.n + '-' + e.n);
+          return st ? `<a class="sello has" href="stretch-${s.n}/?lesson=${e.n}">${PT.stampSVG(e.name, st)}</a>`
+                    : `<a class="sello" href="stretch-${s.n}/?lesson=${e.n}">${L('Lesson ' + e.n, e.n + '과')}<br>${L(e.name, e.ko)}</a>`;
+        }).join('')}</div>`;
+    }).join('');
+  }
+  PT.mountToggles(render);
+  render();
+</script>
+</body>
+</html>
