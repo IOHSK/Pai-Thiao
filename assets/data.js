@@ -36,14 +36,54 @@ const PT_STRETCHES = [
       { n: 7, name: 'Wang Lang', ko: '왕랑', t: ['Asking for a photo', '사진 부탁하기'] },
       { n: 8, name: 'Wat Arun', ko: '왓아룬', t: ['Review and climbing the tower', '종합 복습과 탑 오르기'] }
     ] },
-  { n: 4, open: false, en: 'Wat Arun to Pratunam', ko: '왓아룬에서 쁘라뚜남까지',
-    what: ['Malls and markets: colors, sizes, trying things on, returning and exchanging', '쇼핑몰과 시장. 색깔, 크기, 입어 보기, 교환과 환불'] },
-  { n: 5, open: false, en: 'Pratunam to Asiatique', ko: '쁘라뚜남에서 아시아티크까지',
-    what: ['Bangkok nights: night markets, drinks, rooftop views, describing taste', '방콕의 밤. 야시장, 음료, 루프탑 전망, 맛 표현하기'] },
-  { n: 6, open: false, en: 'Asiatique to Lumphini', ko: '아시아티크에서 룸피니까지',
-    what: ['Slow days: Thai massage, a cooking class, Lumphini Park, Muay Thai, how you feel', '느긋한 하루. 타이 마사지, 요리 교실, 룸피니 공원, 무에타이, 기분 말하기'] },
-  { n: 7, open: false, en: 'Lumphini to Departures', ko: '룸피니에서 출국장까지',
-    what: ['Farewell to Bangkok: souvenirs, keeping in touch, check-in and the airport', '방콕과 작별. 기념품, 연락 이어 가기, 공항 체크인'] }
+  { n: 4, open: true, en: 'Wat Arun to Pratunam', ko: '왓아룬에서 쁘라뚜남까지',
+    what: ['Malls and markets: colors, sizes, trying things on, returning and exchanging', '쇼핑몰과 시장. 색깔, 크기, 입어 보기, 교환과 환불'],
+    lessons: [
+      { n: 1, name: 'Iconsiam', ko: '아이콘시암', t: ['Floors and directions', '층과 방향'] },
+      { n: 2, name: 'Siam Paragon', ko: '시암 파라곤', t: ['Sizes', '사이즈'] },
+      { n: 3, name: 'MBK Center', ko: 'MBK 센터', t: ['Trying things on', '입어 보기'] },
+      { n: 4, name: 'Siam Square', ko: '시암 스퀘어', t: ['More colors, "Do you have it?"', '색깔 더 배우기, "있어요?"'] },
+      { n: 5, name: 'Platinum', ko: '플래티넘', t: ['Buying several, wholesale prices', '여러 개 사기, 도매가'] },
+      { n: 6, name: 'Pratunam Market', ko: '쁘라뚜남 시장', t: ['Exchanges and refunds', '교환과 환불'] },
+      { n: 7, name: 'Central World', ko: '센트럴 월드', t: ['At the counter', '계산대에서'] },
+      { n: 8, name: 'Pratunam', ko: '쁘라뚜남', t: ['Review: a whole shopping trip', '종합 복습: 쇼핑 한 바퀴'] }
+    ] },
+  { n: 5, open: true, en: 'Pratunam to Asiatique', ko: '쁘라뚜남에서 아시아티크까지',
+    what: ['Bangkok nights: night markets, drinks, rooftop views, describing taste', '방콕의 밤. 야시장, 음료, 루프탑 전망, 맛 표현하기'],
+    lessons: [
+      { n: 1, name: 'Baiyoke Sky', ko: '바이욕 스카이', t: ['The view from the top', '꼭대기에서 본 전망'] },
+      { n: 2, name: 'Night Market', ko: '야시장', t: ['Drinks, less sweet', '음료, 덜 달게'] },
+      { n: 3, name: 'Huai Khwang', ko: '후아이꽝', t: ['Describing taste', '맛 표현하기'] },
+      { n: 4, name: 'Thonglor', ko: '텅러', t: ['Ordering a drink, or not', '술 주문하기, 또는 사양하기'] },
+      { n: 5, name: 'Ekkamai', ko: '엑까마이', t: ['Meeting friends', '친구 만나기'] },
+      { n: 6, name: 'Saphan Taksin', ko: '사판 탁신', t: ['Queues and crowds', '줄과 인파'] },
+      { n: 7, name: 'Asiatique Sky', ko: '아시아티크 스카이', t: ['Excited or scared', '신나거나 무섭거나'] },
+      { n: 8, name: 'Asiatique', ko: '아시아티크', t: ['Review: a night out', '종합 복습: 밤 나들이'] }
+    ] },
+  { n: 6, open: true, en: 'Asiatique to Lumphini', ko: '아시아티크에서 룸피니까지',
+    what: ['Slow days: Thai massage, a cooking class, Lumphini Park, Muay Thai, how you feel', '느긋한 하루. 타이 마사지, 요리 교실, 룸피니 공원, 무에타이, 기분 말하기'],
+    lessons: [
+      { n: 1, name: 'Sala Daeng', ko: '살라댕', t: ['Thai massage', '타이 마사지'] },
+      { n: 2, name: 'Cooking School', ko: '요리 교실', t: ['Cooking words', '요리 낱말'] },
+      { n: 3, name: 'Lumphini Park', ko: '룸피니 공원', t: ['A walk in the park', '공원 산책'] },
+      { n: 4, name: 'Benjakitti Park', ko: '벤짜끼띠 공원', t: ['Rain and sun', '비와 햇볕'] },
+      { n: 5, name: 'Rajadamnern', ko: '랏차담넌', t: ['A night at the Muay Thai', '무에타이 관람'] },
+      { n: 6, name: 'Samyan', ko: '삼얀', t: ['Hungry, full, sleepy', '배고파요, 배불러요, 졸려요'] },
+      { n: 7, name: 'Wat Pathum Wanaram', ko: '왓 빠툼 와나람', t: ['A quiet temple, making merit', '조용한 사원, 공덕 쌓기'] },
+      { n: 8, name: 'Lumphini', ko: '룸피니', t: ['Review: a slow day', '종합 복습: 느긋한 하루'] }
+    ] },
+  { n: 7, open: true, en: 'Lumphini to Departures', ko: '룸피니에서 출국장까지',
+    what: ['Farewell to Bangkok: souvenirs, keeping in touch, check-in and the airport', '방콕과 작별. 기념품, 연락 이어 가기, 공항 체크인'],
+    lessons: [
+      { n: 1, name: 'Terminal 21', ko: '터미널 21', t: ['Souvenirs and gifts', '기념품과 선물'] },
+      { n: 2, name: 'Ari', ko: '아리', t: ['Keeping in touch', '연락 이어 가기'] },
+      { n: 3, name: 'Victory Monument', ko: '전승기념탑', t: ['Saying goodbye', '작별 인사'] },
+      { n: 4, name: 'Asok', ko: '아속', t: ['Checking out, a taxi to the airport', '체크아웃, 공항 가는 택시'] },
+      { n: 5, name: 'Makkasan', ko: '막까산', t: ['Traffic and time', '교통과 시간'] },
+      { n: 6, name: 'Check-in', ko: '체크인', t: ['At the airport counter', '공항 카운터에서'] },
+      { n: 7, name: 'Food Court', ko: '푸드 코트', t: ['The last meal', '마지막 식사'] },
+      { n: 8, name: 'Departures', ko: '출국장', t: ['Review: laa-kàwn, Bangkok', '종합 복습: 라껀, 방콕'] }
+    ] }
 ];
 
 // 부록: 방콕 밖 여행. 도시마다 세 과짜리 꾸러미. 폴더 이름은 trip-<id>/

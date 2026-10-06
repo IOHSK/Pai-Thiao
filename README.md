@@ -7,6 +7,10 @@
 - `stretch-1/` 첫째 구간, 공항철도 여덟 역 (`?lesson=1` 처럼 과 번호로 바로 연결)
 - `stretch-2/` 둘째 구간, 방콕 시내 여덟 곳
 - `stretch-3/` 셋째 구간, 옛 도심과 짜오프라야강 여덟 곳
+- `stretch-4/` 넷째 구간, 쇼핑몰과 시장
+- `stretch-5/` 다섯째 구간, 방콕의 밤
+- `stretch-6/` 여섯째 구간, 마사지, 요리, 공원, 무에타이, 사원
+- `stretch-7/` 일곱째 구간, 작별과 공항
 - `trip-ayutthaya/`, `trip-chiangmai/`, `trip-phuket/` 부록 여행. 도시마다 세 과
 - `phrasebook/` 회화 수첩. 열린 과의 표현을 모두 모아 검색하고 듣는다
 - `assets/common.js` 언어와 공손 어미 전환, 진도 저장(localStorage), th-TH 음성, 음성 인식, 도장 그림
@@ -14,6 +18,9 @@
 - `assets/lesson.js` 수업 진행 (소리 듣기, 듣고 고르기, 따라 말하기, 빈칸 채우기, 도장 받기)
 - `assets/stretch-N-lessons.js` 구간별 수업 내용. 파일 맨 위에 형식 설명이 있다
 - `assets/side-lessons.js` 부록 여행 수업 내용. 목록은 `data.js`의 `PT_SIDE`
+
+## 내용 고치기
+넷째부터 일곱째 구간의 lessons 파일은 `gen/` 폴더의 파이썬 파일(s4.py 등)로 만들었다. js 파일을 직접 고쳐도 되고, 파이썬 파일을 고친 뒤 `python3 s4.py`로 다시 만들어도 된다.
 
 ## 새 구간 추가
 1. `assets/stretch-3-lessons.js`를 만들고 `PT_LESSONS[3] = { 1: {...}, ... }` 형식으로 내용을 넣는다
