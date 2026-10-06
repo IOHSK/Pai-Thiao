@@ -172,8 +172,8 @@ PT_LESSONS[1] = {
     { say: 'แปด สี่ หก', parts: ['_', '_', '_'], a: ['8', '4', '6'], opts: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], plain: true },
     { say: 'สิบ สาม', parts: ['_', '_'], a: ['10', '3'], opts: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], plain: true }
   ],
-  note: ['Ramkhamhaeng was a 13th century king of Sukhothai, remembered as the creator of Thai script. You will reach Sukhothai later on this route. Thailand also has its own digits, ๑ ๒ ๓, which you may spot on temple signs and banknotes.',
-         '람캄행은 13세기 수코타이 왕국의 왕으로, 태국 문자를 만든 왕으로 기억돼요. 이 여정 뒤쪽에서 수코타이에 가게 돼요. 태국에는 ๑ ๒ ๓ 같은 고유 숫자도 있어서 사원 안내판이나 지폐에서 볼 수 있어요.'],
+  note: ['Ramkhamhaeng was a 13th century king of Sukhothai, remembered as the creator of Thai script. Ramkhamhaeng Road is also home to a big public university, so this stop is full of students. Thailand also has its own digits, ๑ ๒ ๓, which you may spot on temple signs and banknotes.',
+         '람캄행은 13세기 수코타이 왕국의 왕으로, 태국 문자를 만든 왕으로 기억돼요. 람캄행 거리에는 큰 국립 대학이 있어서 이 역 주변은 학생들로 북적여요. 태국에는 ๑ ๒ ๓ 같은 고유 숫자도 있어서 사원 안내판이나 지폐에서 볼 수 있어요.'],
   today: [0, 2, 4]
 },
 6: {
@@ -218,20 +218,20 @@ PT_LESSONS[1] = {
     { th: '{I}ชื่อมิน{P}', r: '{i} chûe Min {p}', k: '{ki} 츠 민 {k}', m: ['My name is Min', '제 이름은 민이에요'], n: ['phǒm is "I" for men, chǎn for women. Put your own name where Min is.', 'phǒm(폼)은 남성의 "나", chǎn(찬)은 여성의 "나"예요. 민 자리에 내 이름을 넣어요.'] },
     { th: 'มาจากเกาหลี{P}', r: 'maa jàak kao-lǐi {p}', k: '마 짝 까올리 {k}', m: ["I'm from Korea", '한국에서 왔어요'], n: ['Thais often drop "I" when it is clear who is speaking.', '누가 말하는지 분명하면 "나"를 자주 생략해요.'] },
     { th: 'มาจากอเมริกา{P}', r: 'maa jàak a-mee-rí-kaa {p}', k: '마 짝 아메리까 {k}', m: ["I'm from America", '미국에서 왔어요'] },
-    { th: 'เป็นอาจารย์{P}', r: 'pen aa-jaan {p}', k: '뻰 아짠 {k}', m: ["I'm a professor", '교수예요'], n: ['aa-jaan means teacher or professor, a title said with respect.', 'aa-jaan은 교수나 선생님으로, 존경을 담아 부르는 호칭이에요.'] },
-    { th: 'มาประชุม{P}', r: 'maa prà-chum {p}', k: '마 쁘라춤 {k}', m: ['I came for a conference', '학회 때문에 왔어요'], n: ['prà-chum is a meeting or a conference.', 'prà-chum은 회의나 학회예요.'] },
+    { th: 'เป็นคนเกาหลี{P}', r: 'pen khon kao-lǐi {p}', k: '뻰 콘 까올리 {k}', m: ["I'm Korean", '한국 사람이에요'], n: ['khon means person. pen khon + country is your nationality.', 'khon은 사람이에요. pen khon 뒤에 나라 이름을 붙이면 국적이 돼요.'] },
+    { th: 'มาเที่ยว{P}', r: 'maa thîao {p}', k: '마 티아우 {k}', m: ["I'm here on vacation", '여행하러 왔어요'], n: ['thîao means to travel for fun. It is the thiao in Pai Thiao.', 'thîao는 놀러 다니다, 여행하다예요. 이 사이트 이름 Pai Thiao의 바로 그 말이에요.'] },
     { th: 'ยินดีที่ได้รู้จัก{P}', r: 'yin-dii thîi dâi rúu-jàk {p}', k: '인디 티 다이 루짝 {k}', m: ['Nice to meet you', '만나서 반가워요'] }
   ],
-  intro: ['At a conference or a guesthouse, people will ask where you are from and what brings you to Thailand. Tap to hear your answers.',
-          '학회에서도 숙소에서도 어디서 왔는지, 무슨 일로 태국에 왔는지 묻곤 해요. 눌러서 대답을 들어 보세요.'],
+  intro: ['At a guesthouse, a cooking class, or a taxi, people will ask where you are from and what brings you to Thailand. Tap to hear your answers.',
+          '숙소에서도, 요리 교실에서도, 택시에서도 어디서 왔는지, 무슨 일로 태국에 왔는지 묻곤 해요. 눌러서 대답을 들어 보세요.'],
   tip: ['Thai words never change form: maa (come) stays maa for I, you, yesterday, and tomorrow. The button at the top right switches both your polite ending and your word for I.',
         '태국어 낱말은 모양이 바뀌지 않아요. maa(오다)는 나든 너든, 어제든 내일이든 그대로 maa예요. 오른쪽 위 버튼을 누르면 공손 어미와 "나"가 함께 바뀌어요.'],
   choose: [
-    { type: 'mean', say: 'ยินดีที่ได้รู้จัก{P}', opts: [['Nice to meet you', '만나서 반가워요'], ['My name is Min', '제 이름은 민이에요'], ['I came for a conference', '학회 때문에 왔어요']], a: 0, why: ['yin-dii thîi dâi rúu-jàk: glad to get to know you.', 'yin-dii thîi dâi rúu-jàk, 알게 되어 기뻐요.'] },
-    { type: 'hear', say: 'มาจากเกาหลี{P}', opts: ['maa jàak kao-lǐi {p}', 'maa jàak a-mee-rí-kaa {p}', 'maa prà-chum {p}'], a: 0, why: ['kao-lǐi is Korea.', 'kao-lǐi가 한국이에요.'] },
-    { type: 'mean', say: 'เป็นอาจารย์{P}', opts: [["I'm a professor", '교수예요'], ["I'm from Korea", '한국에서 왔어요'], ['Nice to meet you', '만나서 반가워요']], a: 0, why: ['pen means "to be", and aa-jaan is professor.', 'pen은 "이다", aa-jaan은 교수예요.'] },
-    { type: 'hear', say: '{I}ชื่อมิน{P}', opts: ['{i} chûe Min {p}', 'maa prà-chum {p}', 'pen aa-jaan {p}'], a: 0, why: ['chûe means "to be named".', 'chûe는 "이름이 ~이다"예요.'] },
-    { type: 'mean', say: 'มาประชุม{P}', opts: [['I came for a conference', '학회 때문에 왔어요'], ["I'm from America", '미국에서 왔어요'], ["I don't understand", '못 알아들었어요']], a: 0, why: ['maa prà-chum: came for a meeting.', 'maa prà-chum, 회의하러 왔어요.'] },
+    { type: 'mean', say: 'ยินดีที่ได้รู้จัก{P}', opts: [['Nice to meet you', '만나서 반가워요'], ['My name is Min', '제 이름은 민이에요'], ["I'm here on vacation", '여행하러 왔어요']], a: 0, why: ['yin-dii thîi dâi rúu-jàk: glad to get to know you.', 'yin-dii thîi dâi rúu-jàk, 알게 되어 기뻐요.'] },
+    { type: 'hear', say: 'มาจากเกาหลี{P}', opts: ['maa jàak kao-lǐi {p}', 'maa jàak a-mee-rí-kaa {p}', 'maa thîao {p}'], a: 0, why: ['kao-lǐi is Korea.', 'kao-lǐi가 한국이에요.'] },
+    { type: 'mean', say: 'เป็นคนเกาหลี{P}', opts: [["I'm Korean", '한국 사람이에요'], ["I'm from America", '미국에서 왔어요'], ['Nice to meet you', '만나서 반가워요']], a: 0, why: ['pen means "to be"; khon kao-lǐi is a Korean person.', 'pen은 "이다", khon kao-lǐi는 한국 사람이에요.'] },
+    { type: 'hear', say: '{I}ชื่อมิน{P}', opts: ['{i} chûe Min {p}', 'maa thîao {p}', 'pen khon kao-lǐi {p}'], a: 0, why: ['chûe means "to be named".', 'chûe는 "이름이 ~이다"예요.'] },
+    { type: 'mean', say: 'มาเที่ยว{P}', opts: [["I'm here on vacation", '여행하러 왔어요'], ["I'm from America", '미국에서 왔어요'], ["I don't understand", '못 알아들었어요']], a: 0, why: ['maa thîao: came to travel.', 'maa thîao, 여행하러 왔어요.'] },
     { type: 'mean', say: 'มาจากอเมริกา{P}', opts: [["I'm from America", '미국에서 왔어요'], ["I'm from Korea", '한국에서 왔어요'], ["I'm a professor", '교수예요']], a: 0, why: ['a-mee-rí-kaa, America.', 'a-mee-rí-kaa, 미국이에요.'] }
   ],
   speak: [0, 1, 4, 5],
@@ -239,10 +239,10 @@ PT_LESSONS[1] = {
     { say: '{I}ชื่อมิน{P}', parts: ['{i}', '_', 'Min', '{p}'], a: ['chûe'], opts: ['chûe', 'maa', 'pen'] },
     { say: 'มาจากเกาหลี{P}', parts: ['maa', '_', 'kao-lǐi', '{p}'], a: ['jàak'], opts: ['jàak', 'pen', 'dii'] },
     { say: 'ยินดีที่ได้รู้จัก{P}', parts: ['yin-dii', 'thîi', 'dâi', '_', '{p}'], a: ['rúu-jàk'], opts: ['rúu-jàk', 'prà-chum', 'aa-jaan'] },
-    { say: 'เป็นอาจารย์{P}', parts: ['_', 'aa-jaan', '{p}'], a: ['pen'], opts: ['pen', 'maa', 'chûe'] }
+    { say: 'มาเที่ยว{P}', parts: ['maa', '_', '{p}'], a: ['thîao'], opts: ['thîao', 'jàak', 'chûe'] }
   ],
-  note: ['Almost every Thai has a short nickname, like Nok (bird), Ploy (gem), or Bank. At a conference, colleagues may introduce themselves by nickname with Khun in front: Khun Ploy. You can do the same with your own first name.',
-         '태국 사람은 거의 모두 녹(새), 쁠로이(보석), 뱅크 같은 짧은 별명이 있어요. 학회에서도 별명 앞에 쿤(Khun)을 붙여 쿤 쁠로이처럼 소개하곤 해요. 내 이름 앞에 쿤을 붙여 불러 달라고 해도 좋아요.'],
+  note: ['Almost every Thai has a short nickname, like Nok (bird), Ploy (gem), or Bank. New friends may introduce themselves by nickname, and you can call them Khun plus the nickname: Khun Ploy. Feel free to ask people to call you Khun plus your own first name.',
+         '태국 사람은 거의 모두 녹(새), 쁠로이(보석), 뱅크 같은 짧은 별명이 있어요. 새로 만난 사람을 부를 때는 별명 앞에 쿤(Khun)을 붙여 쿤 쁠로이처럼 불러요. 내 이름 앞에 쿤을 붙여 불러 달라고 해도 좋아요.'],
   today: [0, 1, 5]
 },
 8: {
@@ -268,7 +268,7 @@ PT_LESSONS[1] = {
     { type: 'mean', say: 'ยี่สิบบาท', opts: [['20 baht', '20밧'], ['12 baht', '12밧'], ['200 baht', '200밧']], a: 0, why: ['yîi-sìp bàat. Lesson 6.', 'yîi-sìp bàat. 6과.'] },
     { type: 'hear', say: 'หมา', opts: ['mǎa', 'máa', 'maa'], a: 0, why: ['The rising tone: mǎa, dog. Lesson 4.', '올라가는 성조 mǎa, 개예요. 4과.'] },
     { type: 'mean', say: 'สบายดีไหม{Q}', opts: [['How are you?', '잘 지내세요?'], ['How much?', '얼마예요?'], ['Nice to meet you', '만나서 반가워요']], a: 0, why: ['sà-baai-dii mǎi. Lesson 1.', 'sà-baai-dii mǎi. 1과.'] },
-    { type: 'hear', say: 'มาจากเกาหลี{P}', opts: ['maa jàak kao-lǐi {p}', 'maa prà-chum {p}', 'pen aa-jaan {p}'], a: 0, why: ['maa jàak kao-lǐi. Lesson 7.', 'maa jàak kao-lǐi. 7과.'] }
+    { type: 'hear', say: 'มาจากเกาหลี{P}', opts: ['maa jàak kao-lǐi {p}', 'maa thîao {p}', 'pen khon kao-lǐi {p}'], a: 0, why: ['maa jàak kao-lǐi. Lesson 7.', 'maa jàak kao-lǐi. 7과.'] }
   ],
   speak: [0, 5, 3, 1],
   fill: [

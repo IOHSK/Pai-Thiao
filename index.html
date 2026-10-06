@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Pai Thiao: Thai for the Road</title>
-<meta name="description" content="Learn travel Thai one stop at a time, from Suvarnabhumi Airport to Chiang Mai. Free, no sign-up, no ads. Available in English and Korean.">
+<title>Pai Thiao: Thai for Bangkok</title>
+<meta name="description" content="Learn travel Thai one stop at a time around Bangkok, with side trips to Ayutthaya, Chiang Mai, and Phuket. Free, no sign-up, no ads. Available in English and Korean.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -17,7 +17,7 @@
   <header class="top">
     <a class="brand" href="./">Pai Thiao <span class="th">ไปเที่ยว</span></a>
     <div class="right">
-      <nav><a href="#stretches" data-i18n="navStr">Stretches</a><a href="phrasebook/" data-i18n="navPb">Phrasebook</a><a href="#passport" data-i18n="navPass">My passport</a></nav>
+      <nav><a href="#stretches" data-i18n="navStr">Stretches</a><a href="#side-trips" data-i18n="navSide">Side trips</a><a href="phrasebook/" data-i18n="navPb">Phrasebook</a><a href="#passport" data-i18n="navPass">My passport</a></nav>
       <button class="speaker-btn" id="speaker" type="button"></button>
       <button class="lang-btn" id="lang" type="button">한국어</button>
     </div>
@@ -29,7 +29,7 @@
       <div>
       <h1>Pai Thiao</h1>
       <p class="th-title">ไปเที่ยว</p>
-      <p class="sub" data-i18n="sub">"Let's go traveling." Ride from Suvarnabhumi one stop at a time and learn the Thai you will actually use in Thailand.</p>
+      <p class="sub" data-i18n="sub">"Let's go traveling." Ride from Suvarnabhumi into Bangkok one stop at a time and learn the Thai you will actually use around the city.</p>
       <div class="actions">
         <a class="btn go" href="stretch-1/?lesson=1" data-i18n="start">Start the trip</a>
         <a class="btn" href="#stretches" data-i18n="pick">Choose a stretch</a>
@@ -39,17 +39,17 @@
         <img src="assets/chars/mali.svg" alt=""><img src="assets/chars/chang.svg" alt=""><img src="assets/chars/tukkae.svg" alt="">
       </div>
      </div>
-      <div class="route"><svg viewBox="-60 0 1110 180" role="img" aria-label="The route in seven stretches, from Suvarnabhumi Airport to Don Mueang Airport">
+      <div class="route"><svg viewBox="-60 0 1110 180" role="img" aria-label="The route through Bangkok in seven stretches, from Suvarnabhumi Airport back to departures">
   <path d="M 50 110 Q 114 80 179 95 Q 243 130 307 120 Q 371 88 436 100 Q 500 122 564 100 Q 629 86 693 115 Q 757 124 821 90 Q 886 76 950 105" fill="none" stroke="#D8CEBE" stroke-width="10" stroke-linecap="round"/>
   <path d="M 50 110 Q 114 80 179 95 Q 243 130 307 120 Q 371 88 436 100 Q 500 122 564 100 Q 629 86 693 115 Q 757 124 821 90 Q 886 76 950 105" fill="none" stroke="#E3A21A" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
   <circle cx="50" cy="110" r="9" fill="#0E5E5B" stroke="#0E5E5B" stroke-width="3"/><text x="50" y="86" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Suvarnabhumi</text>
   <circle cx="179" cy="95" r="7" fill="#0E5E5B" stroke="#0E5E5B" stroke-width="3"/><text x="179" y="131" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Phaya Thai</text>
   <circle cx="307" cy="120" r="7" fill="#0E5E5B" stroke="#0E5E5B" stroke-width="3"/><text x="307" y="96" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Wat Pho</text>
-  <circle cx="436" cy="100" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="436" y="136" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Conference</text>
-  <circle cx="564" cy="100" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="564" y="76" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Ayutthaya</text>
-  <circle cx="693" cy="115" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="693" y="151" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Sukhothai</text>
-  <circle cx="821" cy="90" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="821" y="66" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Chiang Mai</text>
-  <circle cx="950" cy="105" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="950" y="141" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Don Mueang</text>
+  <circle cx="436" cy="100" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="436" y="136" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Wat Arun</text>
+  <circle cx="564" cy="100" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="564" y="76" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Pratunam</text>
+  <circle cx="693" cy="115" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="693" y="151" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Asiatique</text>
+  <circle cx="821" cy="90" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="821" y="66" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Lumphini</text>
+  <circle cx="950" cy="105" r="7" fill="#F3EDE2" stroke="#0E5E5B" stroke-width="3"/><text x="950" y="141" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="20" font-weight="600" fill="#23201C">Departures</text>
   <g transform="translate(6 110) rotate(90)"><path d="M0 -16 L4 -4 L16 2 L16 6 L4 3 L3 12 L7 15 L7 18 L0 16 L-7 18 L-7 15 L-3 12 L-4 3 L-16 6 L-16 2 L-4 -4 Z" fill="#E3A21A" stroke="#23201C" stroke-width="1.4" stroke-linejoin="round"/></g>
   <g transform="translate(994 105) rotate(90)"><path d="M0 -16 L4 -4 L16 2 L16 6 L4 3 L3 12 L7 15 L7 18 L0 16 L-7 18 L-7 15 L-3 12 L-4 3 L-16 6 L-16 2 L-4 -4 Z" fill="#0E5E5B" stroke="#23201C" stroke-width="1.4" stroke-linejoin="round"/></g>
 </svg></div>
@@ -57,15 +57,21 @@
 
     <section id="stretches" aria-labelledby="t-str">
       <h2 id="t-str" data-i18n="hStr">Seven stretches</h2>
-      <p class="lead" data-i18n="leadStr">From the moment you land at Suvarnabhumi to your flight home from Don Mueang, split into seven stretches. Each one teaches what you will really run into on that part of the trip, and every lesson you finish earns a stamp in your passport.</p>
+      <p class="lead" data-i18n="leadStr">Your time in Bangkok, from landing at Suvarnabhumi to heading back to the airport, split into seven stretches across the city. Each one teaches what you will really run into in that part of town, and every lesson you finish earns a stamp in your passport.</p>
       <ol class="tramos" id="tramos"></ol>
+    </section>
+
+    <section id="side-trips" aria-labelledby="t-side">
+      <h2 id="t-side" data-i18n="hSide">Appendix: beyond Bangkok</h2>
+      <p class="lead" data-i18n="leadSide">Heading out of the city for a few days? Each side trip is a three-lesson bundle you can pick up any time, built on what you learned in Bangkok.</p>
+      <div class="two" id="sides"></div>
     </section>
 
     <section aria-labelledby="t-rooms">
       <h2 id="t-rooms" data-i18n="hRooms">Practice rooms</h2>
       <p class="lead" data-i18n="leadRooms">Alongside the main route: something to carry in your pocket, and a little every day.</p>
       <div class="two">
-        <a class="room" href="phrasebook/"><h3><span data-i18n="r1h">Pocket phrasebook</span> <span class="tag open" data-i18n="open">Open</span></h3><p data-i18n="r1p">Every phrase from the open lessons on one page, searchable, with sound. Keep it open on your phone in a taxi or at a food stall.</p></a>
+        <a class="room" href="phrasebook/"><h3><span data-i18n="r1h">Pocket phrasebook</span> <span class="tag open" data-i18n="open">Open</span></h3><p data-i18n="r1p">Every phrase from the open lessons and side trips on one page, searchable, with sound. Keep it open on your phone in a taxi or at a food stall.</p></a>
         <div class="room"><h3><span data-i18n="r2h">Today's five</span> <span class="tag" data-i18n="soon">Coming soon</span></h3><p data-i18n="r2p">Hear five phrases from lessons you finished and pick what they mean. Phrases you miss come back the next day.</p></div>
       </div>
     </section>
@@ -121,22 +127,26 @@
 <script src="assets/data.js?v=1"></script>
 <script src="assets/stretch-1-lessons.js?v=1"></script>
 <script src="assets/stretch-2-lessons.js?v=1"></script>
+<script src="assets/side-lessons.js?v=1"></script>
 <script>
   const KO = {
  "navStr": "구간",
  "navPb": "회화 수첩",
+ "navSide": "부록 여행",
+ "hSide": "부록: 방콕 밖으로",
+ "leadSide": "며칠 방콕을 벗어나 볼까요? 부록 여행은 도시마다 세 과짜리 꾸러미라서 언제든 골라 할 수 있고, 방콕에서 배운 말 위에 쌓여요.",
  "navPass": "나의 여권",
- "sub": "\"여행 가자\"라는 뜻이에요. 수완나품 공항에서 한 정거장씩, 태국 여행에서 바로 쓰는 태국어를 배워요.",
+ "sub": "\"여행 가자\"라는 뜻이에요. 수완나품 공항에서 방콕 시내로 한 정거장씩, 방콕 여행에서 바로 쓰는 태국어를 배워요.",
  "start": "여행 시작하기",
  "pick": "구간 고르기",
  "hStr": "일곱 구간",
- "leadStr": "수완나품 공항에 내리는 순간부터 돈므앙 공항에서 집으로 돌아가는 날까지를 일곱 구간으로 나눴어요. 구간마다 그 여정에서 실제로 마주칠 상황을 배우고, 과를 마칠 때마다 여권에 도장을 받아요.",
+ "leadStr": "수완나품 공항에 내려서 다시 공항으로 돌아가기까지, 방콕에서 보내는 시간을 도시 곳곳 일곱 구간으로 나눴어요. 구간마다 그 동네에서 실제로 마주칠 상황을 배우고, 과를 마칠 때마다 여권에 도장을 받아요.",
  "open": "열림",
  "soon": "준비 중",
  "hRooms": "연습실",
  "leadRooms": "본 과정 옆에서, 주머니에 넣고 다닐 것과 매일 조금씩 할 것.",
  "r1h": "회화 수첩",
- "r1p": "열린 과의 표현을 한 페이지에 모았어요. 검색할 수 있고 소리도 나요. 택시나 노점에서 휴대전화로 열어 두고 쓰세요.",
+ "r1p": "열린 과와 부록 여행의 표현을 한 페이지에 모았어요. 검색할 수 있고 소리도 나요. 택시나 노점에서 휴대전화로 열어 두고 쓰세요.",
  "r2h": "오늘의 다섯 마디",
  "r2p": "마친 과의 표현 다섯 개를 듣고 뜻을 골라요. 틀린 표현은 다음 날 다시 나와요.",
  "hFriends": "여행 친구",
@@ -174,20 +184,27 @@
     const trio = document.querySelector('.trio');
     if (!trio.dataset.altEn) trio.dataset.altEn = trio.getAttribute('aria-label');
     trio.setAttribute('aria-label', L(trio.dataset.altEn, trio.dataset.altKo));
-    document.title = L('Pai Thiao: Thai for the Road', 'Pai Thiao - 여행하며 배우는 태국어');
+    document.title = L('Pai Thiao: Thai for Bangkok', 'Pai Thiao - 방콕 여행 태국어');
     document.getElementById('tramos').innerHTML = PT_STRETCHES.map(s => {
       const name = L(s.en, s.ko);
       const done = s.lessons ? s.lessons.filter(e => PT.getStamp(s.n + '-' + e.n)).length : 0;
       const tag = s.open ? `<span class="tag open">${done ? L(done + ' of 8 stamped', '도장 ' + done + '/8') : L('Open', '열림')}</span>` : `<span class="tag">${L('Coming soon', '준비 중')}</span>`;
       return `<li class="${s.open ? 'open' : ''}"><div class="name">${s.open ? `<a href="stretch-${s.n}/">${name}</a>` : name}${tag}</div><div class="what">${T(s.what)}</div></li>`;
     }).join('');
-    document.getElementById('passbook').innerHTML = PT_STRETCHES.filter(s => s.open).map(s => {
+    document.getElementById('sides').innerHTML = PT_SIDE.map(s => {
+      const done = s.lessons.filter(e => PT.getStamp(s.n + '-' + e.n)).length;
+      return `<a class="room" href="trip-${s.n}/"><h3>${L(s.en, s.ko)} <span class="tag open">${done ? L(done + ' of 3 stamped', '도장 ' + done + '/3') : L('Open', '열림')}</span></h3>
+        <p>${T(s.what)}</p><p class="side-list">${s.lessons.map(e => e.n + '. ' + T(e.t)).join(' &middot; ')}</p></a>`;
+    }).join('');
+    document.getElementById('passbook').innerHTML = PT_STRETCHES.filter(s => s.open).concat(PT_SIDE).map(s => {
       const all = s.lessons.every(e => PT.getStamp(s.n + '-' + e.n));
-      return `<header><strong>${L(ordEn[s.n - 1] + ' stretch', ordKo[s.n - 1] + ' 구간')}</strong><span>${L(s.en, s.ko)}${all ? L(' (completed)', ' (완주)') : ''}</span></header>
+      const dir = s.side ? 'trip-' + s.n : 'stretch-' + s.n;
+      const head = s.side ? L('Side trip', '부록 여행') : L(ordEn[s.n - 1] + ' stretch', ordKo[s.n - 1] + ' 구간');
+      return `<header><strong>${head}</strong><span>${L(s.en, s.ko)}${all ? L(' (completed)', ' (완주)') : ''}</span></header>
         <div class="sellos">${s.lessons.map(e => {
           const st = PT.getStamp(s.n + '-' + e.n);
-          return st ? `<a class="sello has" href="stretch-${s.n}/?lesson=${e.n}">${PT.stampSVG(e.name, st)}</a>`
-                    : `<a class="sello" href="stretch-${s.n}/?lesson=${e.n}">${L('Lesson ' + e.n, e.n + '과')}<br>${L(e.name, e.ko)}</a>`;
+          return st ? `<a class="sello has" href="${dir}/?lesson=${e.n}">${PT.stampSVG(e.name, st)}</a>`
+                    : `<a class="sello" href="${dir}/?lesson=${e.n}">${L('Lesson ' + e.n, e.n + '과')}<br>${L(e.name, e.ko)}</a>`;
         }).join('')}</div>`;
     }).join('');
   }

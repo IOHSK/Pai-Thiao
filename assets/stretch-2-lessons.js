@@ -177,8 +177,8 @@ PT_LESSONS[2] = {
     { th: 'แอร์เสีย{P}', r: 'ae sǐa {p}', k: '애 씨아 {k}', m: ['The air conditioner is broken', '에어컨이 고장 났어요'] },
     { th: 'เช็คเอาท์กี่โมง{Q}', r: 'chék-áo kìi mohng {q}', k: '첵아오 끼 몽 {k}', m: ['What time is check-out?', '체크아웃은 몇 시예요?'] }
   ],
-  intro: ['Silom is a business district full of hotels, many close to conference venues. Here is what you need at the front desk.',
-          '실롬은 호텔이 많은 업무 지구로, 학회장과 가까운 곳도 많아요. 프런트에서 필요한 말을 배워요.'],
+  intro: ['Silom is a business district packed with hotels, right on the Skytrain and the subway. Here is what you need at the front desk.',
+          '실롬은 호텔이 많은 업무 지구로, 지상철과 지하철이 모두 지나가요. 프런트에서 필요한 말을 배워요.'],
   tip: ['kìi mohng means "what time", and a-rai means "what". Add dâi mǎi from the taxi lesson and you can ask most front desk questions. Many hotel words come from English: chék-in, chék-áo, wai-fai, and ae for the air conditioner.',
         'kìi mohng은 "몇 시", a-rai는 "무엇"이에요. 택시 과에서 배운 dâi mǎi까지 더하면 프런트에서 웬만한 질문은 다 할 수 있어요. 호텔 낱말은 영어에서 온 말이 많아요. chék-in, chék-áo, wai-fai, 그리고 에어컨은 ae예요.'],
   choose: [
@@ -267,8 +267,8 @@ PT_LESSONS[2] = {
     { say: 'ห้องน้ำอยู่ที่ไหน{Q}', parts: ['hâwng-náam', 'yùu', '_', '{q}'], a: ['thîi-nǎi'], opts: ['thîi-nǎi', 'trong nán', 'kìi mohng'] },
     { say: 'เผ็ดไหม{Q}', parts: ['phèt', '_', '{q}'], a: ['mǎi'], opts: ['mǎi', 'mâi', 'mài'] }
   ],
-  note: ['Wat Pho is also the birthplace of traditional Thai massage, and its school still teaches today. After walking the temple grounds, a massage there is a fine reward. You have finished the second stretch. Next comes the conference.',
-         '왓포는 태국 전통 마사지의 발상지로, 지금도 이곳 학교에서 마사지를 가르쳐요. 사원을 한참 걸은 뒤에 받는 마사지는 좋은 보상이 돼요. 둘째 구간을 모두 마쳤어요. 다음은 학회예요.'],
+  note: ['Wat Pho is also the birthplace of traditional Thai massage, and its school still teaches today. After walking the temple grounds, a massage there is a fine reward. You have finished the second stretch. Next, the old town and the river.',
+         '왓포는 태국 전통 마사지의 발상지로, 지금도 이곳 학교에서 마사지를 가르쳐요. 사원을 한참 걸은 뒤에 받는 마사지는 좋은 보상이 돼요. 둘째 구간을 모두 마쳤어요. 다음은 옛 도심과 강가예요.'],
   today: [0, 6, 1]
 }
 };

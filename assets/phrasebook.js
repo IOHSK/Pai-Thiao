@@ -6,7 +6,7 @@ const fold = s => R(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerC
 const q = document.getElementById('q');
 const groups = [];
 const seen = new Set();
-PT_STRETCHES.filter(s => s.open).forEach(s => s.lessons.forEach(e => {
+PT_STRETCHES.concat(PT_SIDE).filter(s => s.open).forEach(s => s.lessons.forEach(e => {
   const les = (PT_LESSONS[s.n] || {})[e.n]; if (!les) return;
   const items = les.units.filter(u => !seen.has(u.th) && seen.add(u.th));
   if (items.length) groups.push({ s, e, items });
@@ -22,14 +22,14 @@ function render() {
   document.getElementById('navS').textContent = L('Stretches', '구간');
   document.getElementById('navC').textContent = L('My passport', '나의 여권');
   document.getElementById('pbH').textContent = L('Pocket phrasebook', '회화 수첩');
-  document.getElementById('pbLead').textContent = L('Every phrase from the open lessons, grouped by stop. Tap a phrase to hear it, or show the Thai script to the person you are talking to.', '열린 과의 모든 표현을 정거장별로 모았어요. 눌러서 듣거나, 태국 글자를 상대에게 바로 보여 줘도 돼요.');
+  document.getElementById('pbLead').textContent = L('Every phrase from the open lessons and side trips, grouped by stop. Tap a phrase to hear it, or show the Thai script to the person you are talking to.', '열린 과와 부록 여행의 모든 표현을 정거장별로 모았어요. 눌러서 듣거나, 태국 글자를 상대에게 바로 보여 줘도 돼요.');
   q.placeholder = L('Search: water, how much, restroom, ขอบคุณ', '검색: 물, 얼마, 화장실, ขอบคุณ');
   paintSlow();
   const term = fold(q.value.trim());
   const html = groups.map(g => {
     const items = g.items.filter(u => !term || [u.th, u.r, u.m[0], u.m[1], u.k || ''].some(x => fold(x).includes(term)));
     if (!items.length) return '';
-    return `<div class="pb-group"><h3>${g.s.n}-${g.e.n}. ${L(g.e.name, g.e.ko)} <span class="muted" style="font:400 .95rem var(--sans)">${T(g.e.t)}</span></h3>
+    return `<div class="pb-group"><h3>${g.s.side ? L(g.s.en, g.s.ko) + ' ' : g.s.n + '-'}${g.e.n}. ${L(g.e.name, g.e.ko)} <span class="muted" style="font:400 .95rem var(--sans)">${T(g.e.t)}</span></h3>
       <ul class="pb-list">${items.map(u => `<li><span class="th">${R(u.th)}</span>
         <button class="btn small play" data-say="${esc(u.th)}" aria-label="${L('Listen', '듣기')}">${PT.playIcon}</button>
         <span class="rom">${R(u.r)}</span>${PT.getLang() === 'ko' && u.k ? `<span class="kpron">${R(u.k)}</span>` : ''}

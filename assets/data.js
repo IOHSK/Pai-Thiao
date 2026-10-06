@@ -24,14 +24,39 @@ const PT_STRETCHES = [
       { n: 7, name: 'Khao San', ko: '카오산', t: ['Pharmacy and help', '약국과 도움 요청'] },
       { n: 8, name: 'Wat Pho', ko: '왓포', t: ['Review and temple manners', '종합 복습과 사원 예절'] }
     ] },
-  { n: 3, open: false, en: 'Wat Pho to the conference hall', ko: '왓포에서 학회장까지',
-    what: ['Conference days: presenting yourself, small talk with colleagues, thanking your hosts', '학회 기간. 발표자로 나를 소개하기, 동료와 가벼운 대화, 초청해 준 분께 감사 인사'] },
-  { n: 4, open: false, en: 'The conference hall to Ayutthaya', ko: '학회장에서 아유타야까지',
-    what: ['Day trip: time, days of the week, boats and buses, temple ruins', '당일치기 여행. 시간, 요일, 배와 버스, 옛 사원 터'] },
-  { n: 5, open: false, en: 'Ayutthaya to Sukhothai', ko: '아유타야에서 수코타이까지',
-    what: ['Train tickets, schedules, the weather, renting a bicycle', '기차표, 시간표, 날씨, 자전거 빌리기'] },
-  { n: 6, open: false, en: 'Sukhothai to Chiang Mai', ko: '수코타이에서 치앙마이까지',
-    what: ['Night markets, describing things, northern food, how you feel', '야시장, 물건 묘사하기, 북부 음식, 기분 말하기'] },
-  { n: 7, open: false, en: 'Chiang Mai to Don Mueang', ko: '치앙마이에서 돈므앙까지',
-    what: ['Farewells, gifts, keeping in touch, telling the story of your trip', '작별 인사, 선물, 연락 이어 가기, 나의 여행 이야기'] }
+  { n: 3, open: false, en: 'Wat Pho to Wat Arun', ko: '왓포에서 왓아룬까지',
+    what: ['The old town and the river: the Grand Palace, dress codes, tickets, river boats, telling time', '옛 도심과 강. 왕궁, 복장 규정, 입장권, 강배, 시간 말하기'] },
+  { n: 4, open: false, en: 'Wat Arun to Pratunam', ko: '왓아룬에서 쁘라뚜남까지',
+    what: ['Malls and markets: colors, sizes, trying things on, returning and exchanging', '쇼핑몰과 시장. 색깔, 크기, 입어 보기, 교환과 환불'] },
+  { n: 5, open: false, en: 'Pratunam to Asiatique', ko: '쁘라뚜남에서 아시아티크까지',
+    what: ['Bangkok nights: night markets, drinks, rooftop views, describing taste', '방콕의 밤. 야시장, 음료, 루프탑 전망, 맛 표현하기'] },
+  { n: 6, open: false, en: 'Asiatique to Lumphini', ko: '아시아티크에서 룸피니까지',
+    what: ['Slow days: Thai massage, a cooking class, Lumphini Park, Muay Thai, how you feel', '느긋한 하루. 타이 마사지, 요리 교실, 룸피니 공원, 무에타이, 기분 말하기'] },
+  { n: 7, open: false, en: 'Lumphini to Departures', ko: '룸피니에서 출국장까지',
+    what: ['Farewell to Bangkok: souvenirs, keeping in touch, check-in and the airport', '방콕과 작별. 기념품, 연락 이어 가기, 공항 체크인'] }
+];
+
+// 부록: 방콕 밖 여행. 도시마다 세 과짜리 꾸러미. 폴더 이름은 trip-<id>/
+const PT_SIDE = [
+  { n: 'ayutthaya', side: true, open: true, en: 'Ayutthaya', ko: '아유타야',
+    what: ['A day trip to the old capital: train tickets, renting a bicycle, opening hours and the heat', '옛 수도로 당일치기. 기차표, 자전거 빌리기, 관람 시간과 더위'],
+    lessons: [
+      { n: 1, name: 'Krung Thep Aphiwat', ko: '끄룽텝 아피왓', t: ['Train tickets', '기차표 사기'] },
+      { n: 2, name: 'Wat Mahathat', ko: '왓 마하탓', t: ['Bicycles and tuk-tuks', '자전거와 뚝뚝'] },
+      { n: 3, name: 'Chao Phrom Market', ko: '짜오프롬 시장', t: ['Opening hours and the heat', '관람 시간과 더위'] }
+    ] },
+  { n: 'chiangmai', side: true, open: true, en: 'Chiang Mai', ko: '치앙마이',
+    what: ['The north: red trucks, the night bazaar, northern food, cool evenings and how you feel', '북부 여행. 빨간 트럭, 야시장, 북부 음식, 선선한 저녁과 기분'],
+    lessons: [
+      { n: 1, name: 'Tha Phae Gate', ko: '타패 문', t: ['Riding the red trucks', '빨간 트럭 타기'] },
+      { n: 2, name: 'Night Bazaar', ko: '나이트 바자', t: ['Northern food', '북부 음식'] },
+      { n: 3, name: 'Doi Suthep', ko: '도이 수텝', t: ['Weather and feelings', '날씨와 기분'] }
+    ] },
+  { n: 'phuket', side: true, open: true, en: 'Phuket and the islands', ko: '푸껫과 섬들',
+    what: ['The sea: beaches, boats to the islands, seasickness, and seafood by the kilo', '바다 여행. 해변, 섬으로 가는 배, 뱃멀미, 킬로로 사는 해산물'],
+    lessons: [
+      { n: 1, name: 'Patong Beach', ko: '빠통 해변', t: ['At the beach', '해변에서'] },
+      { n: 2, name: 'Rassada Pier', ko: '랏사다 부두', t: ['Boats and islands', '배와 섬'] },
+      { n: 3, name: 'Rawai', ko: '라와이', t: ['Seafood', '해산물'] }
+    ] }
 ];

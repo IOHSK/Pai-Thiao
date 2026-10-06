@@ -183,3 +183,4 @@ footer .links{display:flex;gap:1.2rem;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media (max-width:520px){.top .right{flex-wrap:nowrap;gap:.45rem}.lang-btn,.speaker-btn{padding:.4rem .65rem;font-size:.85rem}}
 @media (max-width:400px){.brand .th{display:none}}
+.room .side-list{margin-top:.5rem;font-size:.88rem}

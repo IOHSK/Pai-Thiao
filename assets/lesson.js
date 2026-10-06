@@ -4,7 +4,7 @@ const L = PT.L, R = PT.R;
 const T = pair => R(L(pair[0], pair[1]));
 const app = document.getElementById('app');
 const S = window.PT_STRETCH;
-const STR = PT_STRETCHES.find(s => s.n === S);
+const STR = PT_STRETCHES.concat(typeof PT_SIDE !== 'undefined' ? PT_SIDE : []).find(s => s.n === S);
 const ALL = (window.PT_LESSONS || {})[S] || {};
 const params = new URLSearchParams(location.search);
 const ln = parseInt(params.get('lesson'), 10);
@@ -14,8 +14,8 @@ const playBtn = (text, label) => `<button class="btn small play" data-say="${esc
 const friend = (who, html) => `<div class="say"><div class="avatar">${PT.charImg(who, '../')}</div><p>${R(html)}</p></div>`;
 const small = t => `<small class="count">${t}</small>`;
 const koOnly = s => PT.getLang() === 'ko' && s ? `<span class="kpron">${R(s)}</span>` : '';
-const stretchName = () => L(STR.en, STR.ko);
-const ordinal = n => L(['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh'][n - 1] + ' stretch', ['첫째', '둘째', '셋째', '넷째', '다섯째', '여섯째', '일곱째'][n - 1] + ' 구간');
+const stretchName = () => STR.side ? L('Beyond Bangkok', '방콕 밖으로') : L(STR.en, STR.ko);
+const ordinal = n => typeof n === 'string' ? L('Side trip: ' + STR.en, '부록: ' + STR.ko) : L(['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh'][n - 1] + ' stretch', ['첫째', '둘째', '셋째', '넷째', '다섯째', '여섯째', '일곱째'][n - 1] + ' 구간');
 
 app.addEventListener('click', e => {
   const b = e.target.closest('[data-say]');
@@ -32,14 +32,14 @@ function chrome() {
   document.getElementById('navT').textContent = ordinal(S);
   document.getElementById('navC').textContent = L('My passport', '나의 여권');
   const pb = document.getElementById('navPb'); if (pb) pb.textContent = L('Phrasebook', '회화 수첩');
-  document.title = `${ordinal(S)}: ${stretchName()} - Pai Thiao`;
+  document.title = `${STR.side ? ordinal(S) : ordinal(S) + ': ' + stretchName()} - Pai Thiao`;
 }
 
 /* 과 고르기 화면 */
 function listPage() {
-  app.innerHTML = `<p class="crumb"><a href="../#stretches">${L('All stretches', '모든 구간')}</a></p>
-    <h2>${ordinal(S)}: ${stretchName()}</h2>
-    <p class="lead">${T(STR.what)}. ${L('Eight lessons, about ten minutes each. One a day is plenty.', '모두 여덟 과이고, 한 과에 10분 정도예요. 하루 한 과면 충분해요.')}</p>
+  app.innerHTML = `<p class="crumb"><a href="../#${STR.side ? 'side-trips' : 'stretches'}">${STR.side ? L('All side trips', '모든 부록 여행') : L('All stretches', '모든 구간')}</a></p>
+    <h2>${STR.side ? ordinal(S) : ordinal(S) + ': ' + stretchName()}</h2>
+    <p class="lead">${T(STR.what)}. ${L(STR.lessons.length + ' lessons, about ten minutes each.' + (STR.side ? ' Do them the week before you go.' : ' One a day is plenty.'), '모두 ' + STR.lessons.length + '과이고, 한 과에 10분 정도예요.' + (STR.side ? ' 떠나기 전 주에 해 두면 좋아요.' : ' 하루 한 과면 충분해요.'))}</p>
     <ol class="etapas">${STR.lessons.map(e => {
       const s = PT.getStamp(S + '-' + e.n);
       const ready = !!ALL[e.n];
@@ -222,7 +222,7 @@ function stampStep() {
   const stars = score >= TOTAL - 1 ? 3 : score >= TOTAL - 4 ? 2 : 1;
   PT.setStamp(S + '-' + info.n, stars);
   const nextInfo = STR.lessons.find(e => e.n === info.n + 1);
-  const nextStr = PT_STRETCHES.find(s => s.n === S + 1);
+  const nextStr = STR.side ? null : PT_STRETCHES.find(s => s.n === S + 1);
   const nextBtn = nextInfo && ALL[nextInfo.n]
     ? `<a class="btn go" href="?lesson=${nextInfo.n}">${L('Next lesson: ' + nextInfo.name, '다음 과: ' + nextInfo.ko)}</a>`
     : (nextStr && nextStr.open ? `<a class="btn go" href="../stretch-${nextStr.n}/?lesson=1">${L('On to the ' + ordinal(nextStr.n).toLowerCase(), ordinal(nextStr.n) + '으로')}</a>`
@@ -231,7 +231,7 @@ function stampStep() {
     <div class="stamp-big">${PT.stampSVG(info.name, stars)}</div>
     <p style="text-align:center">${L(`You got ${score} of ${TOTAL} right on the first try and earned ${stars} of 3 lotuses.${stars < 3 ? ' Ride it again tomorrow to earn all three.' : ''}`,
       `${TOTAL}문제 중 ${score}문제를 한 번에 맞혀서 연꽃 ${stars}개를 받았어요.${stars < 3 ? ' 내일 다시 하면 세 개를 받을 수 있어요.' : ''}`)}</p>
-    ${LS.final ? `<p class="feedback ok" style="text-align:center">${L('You have finished the ' + ordinal(S).toLowerCase() + ', ' + STR.en + '.', ordinal(S) + ', ' + STR.ko + '를 모두 마쳤어요.')}</p>` : ''}
+    ${LS.final ? `<p class="feedback ok" style="text-align:center">${STR.side ? L('You have finished the side trip to ' + STR.en + '.', STR.ko + ' 부록 여행을 모두 마쳤어요.') : L('You have finished the ' + ordinal(S).toLowerCase() + ', ' + STR.en + '.', ordinal(S) + ', ' + STR.ko + '를 모두 마쳤어요.')}</p>` : ''}
     ${friend('tukkae', T(LS.note))}
     <h3 class="h3">${L('Phrases from today', '오늘 만난 말')}</h3>
     <ul class="words">${LS.today.map(k => LS.units[k]).map(u => `<li><span class="th">${R(u.th)}</span> <span class="rom">${R(u.r)}</span> <span class="muted">${T(u.m)}</span> ${playBtn(u.th)}</li>`).join('')}</ul>
