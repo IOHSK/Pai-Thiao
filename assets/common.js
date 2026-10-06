@@ -2,7 +2,7 @@
 const PT = (() => {
   // 캐릭터 그림: 같은 이름으로 덮어쓰거나 여기 파일 이름만 바꾸면 첫 화면과 수업 화면에 모두 반영된다
   const CHARS = { mali: 'mali.svg', chang: 'chang.svg', tukkae: 'tukkae.svg' };
-  const charSrc = (who, base = '') => `${base}assets/chars/${CHARS[who]}?v=3`;
+  const charSrc = (who, base = '') => `${base}assets/chars/${CHARS[who]}?v=4`;
   const charImg = (who, base = '') => `<img src="${charSrc(who, base)}" alt="" width="120" height="120">`;
 
   const get = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
@@ -47,7 +47,7 @@ const PT = (() => {
       }
     };
     paint();
-    b.onclick = () => { put(LKEY, getLang() === 'ko' ? 'en' : 'ko'); paint(); onChange(); };
+    b.onclick = () => { put(LKEY, getLang() === 'ko' ? 'en' : 'ko'); paint(); onChange(); paintOffline(); };
     if (g) g.onclick = () => { put(GKEY, getG() === 'm' ? 'f' : 'm'); paint(); onChange(); };
   }
 
@@ -118,6 +118,30 @@ const PT = (() => {
 
   const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
 
+
+  // 오프라인 저장: 이 파일(assets/common.js) 위치에서 사이트 맨 위 주소를 구해 sw.js를 등록한다
+  const BASE = (() => { const sc = document.currentScript; return sc ? sc.src.replace(/assets\/common\.js.*$/, '') : './'; })();
+  let offlineReady = false, installEvt = null;
+  function paintOffline() {
+    const el = document.getElementById('offline-status'); if (!el) return;
+    if (!('serviceWorker' in navigator)) { el.textContent = L('This browser cannot save the site for offline use.', '이 브라우저는 오프라인 저장을 지원하지 않아요.'); el.className = 'feedback no'; return; }
+    el.className = 'feedback ' + (offlineReady ? 'ok' : '');
+    el.textContent = offlineReady
+      ? L('Saved on this device. Pai Thiao will open even without internet.', '이 기기에 저장됐어요. 인터넷이 없어도 Pai Thiao가 열려요.')
+      : L('Saving the site on this device...', '이 기기에 사이트를 저장하는 중이에요...');
+    const ib = document.getElementById('install');
+    if (ib) { ib.hidden = !installEvt; ib.textContent = L('Add to home screen', '홈 화면에 추가'); }
+  }
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register(BASE + 'sw.js').then(() => navigator.serviceWorker.ready).then(() => { offlineReady = true; paintOffline(); }).catch(() => paintOffline());
+    });
+  }
+  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; paintOffline(); });
+  document.addEventListener('click', e => {
+    if (e.target.closest('#install') && installEvt) { installEvt.prompt(); installEvt.userChoice.finally(() => { installEvt = null; paintOffline(); }); }
+  });
+
   // 비자 도장: 지붕 끝이 솟은 사원 모양, 이름, 받은 연꽃(1~3)
   function stampSVG(name, stars) {
     const c = '#A8323E';
@@ -133,5 +157,5 @@ const PT = (() => {
       <text x="50" y="58" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="${fs.toFixed(1)}" font-weight="700" fill="${c}">${name.toUpperCase()}</text>
       ${dots}</svg>`;
   }
-  return { charSrc, charImg, getLang, L, R, getG, applyI18n, mountToggles, getStamp, setStamp, speak, isSlow, setSlow, canListen, listen, close, playIcon, stampSVG, hasVoice: () => !!voice };
+  return { paintOffline, charSrc, charImg, getLang, L, R, getG, applyI18n, mountToggles, getStamp, setStamp, speak, isSlow, setSlow, canListen, listen, close, playIcon, stampSVG, hasVoice: () => !!voice };
 })();

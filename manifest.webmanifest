@@ -1,0 +1,15 @@
+{
+  "name": "Pai Thiao: Thai for Bangkok",
+  "short_name": "Pai Thiao",
+  "description": "Learn travel Thai one stop at a time around Bangkok.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F3EDE2",
+  "theme_color": "#0E5E5B",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

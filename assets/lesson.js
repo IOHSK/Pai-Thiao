@@ -235,6 +235,7 @@ function stampStep() {
     ${friend('tukkae', T(LS.note))}
     <h3 class="h3">${L('Phrases from today', '오늘 만난 말')}</h3>
     <ul class="words">${LS.today.map(k => LS.units[k]).map(u => `<li><span class="th">${R(u.th)}</span> <span class="rom">${R(u.r)}</span> <span class="muted">${T(u.m)}</span> ${playBtn(u.th)}</li>`).join('')}</ul>
+    <p class="muted" style="font-size:.95rem">${L('These phrases now join your daily review.', '이 표현들은 이제 매일 복습에 들어가요.')} <a href="../practice/">${L("Today's five", '오늘의 다섯 마디')}</a></p>
     <div class="nav-bottom"><button class="btn" id="again">${L('Start over', '처음부터 다시')}</button>${nextBtn}</div>`);
   document.getElementById('again').onclick = () => { score = 0; go(0); };
 }

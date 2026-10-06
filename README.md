@@ -12,7 +12,8 @@
 - `stretch-6/` 여섯째 구간, 마사지, 요리, 공원, 무에타이, 사원
 - `stretch-7/` 일곱째 구간, 작별과 공항
 - `trip-ayutthaya/`, `trip-chiangmai/`, `trip-phuket/` 부록 여행. 도시마다 세 과
-- `phrasebook/` 회화 수첩. 열린 과의 표현을 모두 모아 검색하고 듣는다
+- `phrasebook/` 회화 수첩
+- `practice/` 오늘의 다섯 마디(매일 복습). 열린 과의 표현을 모두 모아 검색하고 듣는다
 - `assets/common.js` 언어와 공손 어미 전환, 진도 저장(localStorage), th-TH 음성, 음성 인식, 도장 그림
 - `assets/data.js` 일곱 구간과 과 목록 (구간을 열려면 `open: true`와 `lessons` 목록을 넣는다)
 - `assets/lesson.js` 수업 진행 (소리 듣기, 듣고 고르기, 따라 말하기, 빈칸 채우기, 도장 받기)
@@ -39,6 +40,12 @@
 
 ## 캐릭터 그림 바꾸기
 `assets/chars/`의 mali.svg(샴고양이), chang.svg(코끼리), tukkae.svg(도마뱀). 새 그림(webp 등)을 넣고 `assets/common.js` 맨 위의 `CHARS`와 `index.html`의 그림 경로만 바꾸면 된다. 정사각형, 원형으로 잘려도 괜찮은 구도가 좋다.
+
+## 오프라인 저장과 홈 화면 앱
+`sw.js`가 사이트 전체를 휴대전화에 저장하고, `manifest.webmanifest`와 `assets/icons/`가 홈 화면 아이콘을 맡는다. 내용을 고쳐 다시 올릴 때는 `python3 gen/make_sw.py 5`처럼 숫자를 하나 올려 실행한다. 그래야 이미 저장해 둔 휴대전화에도 새 내용이 들어간다(사이트를 한 번 더 열면 바뀐다). 파일을 새로 추가했을 때도 같은 명령으로 저장 목록이 갱신된다.
+
+## 오늘의 다섯 마디
+`practice/`와 `assets/practice.js`. 도장을 받은 과의 표현에서 다섯 개를 골라 듣고 뜻을 맞힌다. 틀린 표현과 복습한 날짜는 브라우저(`paithiao:review`)에 저장되고, 틀린 표현은 다음 복습 때 먼저 나온다.
 
 ## GitHub Pages
 저장소 루트에 이 폴더 내용을 올리고 Settings > Pages에서 main 브랜치를 선택.
