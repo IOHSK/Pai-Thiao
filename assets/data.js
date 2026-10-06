@@ -24,8 +24,18 @@ const PT_STRETCHES = [
       { n: 7, name: 'Khao San', ko: '카오산', t: ['Pharmacy and help', '약국과 도움 요청'] },
       { n: 8, name: 'Wat Pho', ko: '왓포', t: ['Review and temple manners', '종합 복습과 사원 예절'] }
     ] },
-  { n: 3, open: false, en: 'Wat Pho to Wat Arun', ko: '왓포에서 왓아룬까지',
-    what: ['The old town and the river: the Grand Palace, dress codes, tickets, river boats, telling time', '옛 도심과 강. 왕궁, 복장 규정, 입장권, 강배, 시간 말하기'] },
+  { n: 3, open: true, en: 'Wat Pho to Wat Arun', ko: '왓포에서 왓아룬까지',
+    what: ['The old town and the river: river boats, the Grand Palace, telling time, markets, colors, days, photos', '옛 도심과 강. 강배, 왕궁, 시간 말하기, 시장, 색깔, 요일, 사진 부탁'],
+    lessons: [
+      { n: 1, name: 'Tha Tien', ko: '타띠안', t: ['River boats', '강을 오가는 배'] },
+      { n: 2, name: 'Grand Palace', ko: '왕궁', t: ['Tickets and the dress code', '입장권과 복장 규정'] },
+      { n: 3, name: 'Sanam Luang', ko: '사남 루앙', t: ['Telling time', '시간 말하기'] },
+      { n: 4, name: 'Tha Prachan', ko: '타프라짠', t: ['"What is this?"', '"이건 뭐예요?"'] },
+      { n: 5, name: 'Pak Khlong Talat', ko: '빡끌렁 딸랏', t: ['Flowers and colors', '꽃과 색깔'] },
+      { n: 6, name: 'Tha Maharaj', ko: '타마하랏', t: ['Today, tomorrow, every day', '오늘, 내일, 매일'] },
+      { n: 7, name: 'Wang Lang', ko: '왕랑', t: ['Asking for a photo', '사진 부탁하기'] },
+      { n: 8, name: 'Wat Arun', ko: '왓아룬', t: ['Review and climbing the tower', '종합 복습과 탑 오르기'] }
+    ] },
   { n: 4, open: false, en: 'Wat Arun to Pratunam', ko: '왓아룬에서 쁘라뚜남까지',
     what: ['Malls and markets: colors, sizes, trying things on, returning and exchanging', '쇼핑몰과 시장. 색깔, 크기, 입어 보기, 교환과 환불'] },
   { n: 5, open: false, en: 'Pratunam to Asiatique', ko: '쁘라뚜남에서 아시아티크까지',

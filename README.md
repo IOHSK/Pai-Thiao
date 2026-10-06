@@ -6,6 +6,7 @@
 - `index.html` 첫 화면 (일곱 구간, 연습실, 여행 친구, 여권, 배우는 방법)
 - `stretch-1/` 첫째 구간, 공항철도 여덟 역 (`?lesson=1` 처럼 과 번호로 바로 연결)
 - `stretch-2/` 둘째 구간, 방콕 시내 여덟 곳
+- `stretch-3/` 셋째 구간, 옛 도심과 짜오프라야강 여덟 곳
 - `trip-ayutthaya/`, `trip-chiangmai/`, `trip-phuket/` 부록 여행. 도시마다 세 과
 - `phrasebook/` 회화 수첩. 열린 과의 표현을 모두 모아 검색하고 듣는다
 - `assets/common.js` 언어와 공손 어미 전환, 진도 저장(localStorage), th-TH 음성, 음성 인식, 도장 그림

@@ -232,13 +232,13 @@ PT_LESSONS[1] = {
     { type: 'mean', say: 'เป็นคนเกาหลี{P}', opts: [["I'm Korean", '한국 사람이에요'], ["I'm from America", '미국에서 왔어요'], ['Nice to meet you', '만나서 반가워요']], a: 0, why: ['pen means "to be"; khon kao-lǐi is a Korean person.', 'pen은 "이다", khon kao-lǐi는 한국 사람이에요.'] },
     { type: 'hear', say: '{I}ชื่อมิน{P}', opts: ['{i} chûe Min {p}', 'maa thîao {p}', 'pen khon kao-lǐi {p}'], a: 0, why: ['chûe means "to be named".', 'chûe는 "이름이 ~이다"예요.'] },
     { type: 'mean', say: 'มาเที่ยว{P}', opts: [["I'm here on vacation", '여행하러 왔어요'], ["I'm from America", '미국에서 왔어요'], ["I don't understand", '못 알아들었어요']], a: 0, why: ['maa thîao: came to travel.', 'maa thîao, 여행하러 왔어요.'] },
-    { type: 'mean', say: 'มาจากอเมริกา{P}', opts: [["I'm from America", '미국에서 왔어요'], ["I'm from Korea", '한국에서 왔어요'], ["I'm a professor", '교수예요']], a: 0, why: ['a-mee-rí-kaa, America.', 'a-mee-rí-kaa, 미국이에요.'] }
+    { type: 'mean', say: 'มาจากอเมริกา{P}', opts: [["I'm from America", '미국에서 왔어요'], ["I'm from Korea", '한국에서 왔어요'], ["I'm Korean", '한국 사람이에요']], a: 0, why: ['a-mee-rí-kaa, America.', 'a-mee-rí-kaa, 미국이에요.'] }
   ],
   speak: [0, 1, 4, 5],
   fill: [
     { say: '{I}ชื่อมิน{P}', parts: ['{i}', '_', 'Min', '{p}'], a: ['chûe'], opts: ['chûe', 'maa', 'pen'] },
     { say: 'มาจากเกาหลี{P}', parts: ['maa', '_', 'kao-lǐi', '{p}'], a: ['jàak'], opts: ['jàak', 'pen', 'dii'] },
-    { say: 'ยินดีที่ได้รู้จัก{P}', parts: ['yin-dii', 'thîi', 'dâi', '_', '{p}'], a: ['rúu-jàk'], opts: ['rúu-jàk', 'prà-chum', 'aa-jaan'] },
+    { say: 'ยินดีที่ได้รู้จัก{P}', parts: ['yin-dii', 'thîi', 'dâi', '_', '{p}'], a: ['rúu-jàk'], opts: ['rúu-jàk', 'thîao', 'kao-lǐi'] },
     { say: 'มาเที่ยว{P}', parts: ['maa', '_', '{p}'], a: ['thîao'], opts: ['thîao', 'jàak', 'chûe'] }
   ],
   note: ['Almost every Thai has a short nickname, like Nok (bird), Ploy (gem), or Bank. New friends may introduce themselves by nickname, and you can call them Khun plus the nickname: Khun Ploy. Feel free to ask people to call you Khun plus your own first name.',
