@@ -1,5 +1,5 @@
 // Pai Thiao 오프라인 저장. 파일을 바꿔 올릴 때마다 VERSION 숫자를 올리면 휴대전화에 저장된 사이트가 새로 바뀐다.
-const VERSION = 'pai-thiao-v4';
+const VERSION = 'pai-thiao-v5';
 const FONTS = 'pai-thiao-fonts';
 const FILES = [
   "./",
@@ -17,9 +17,9 @@ const FILES = [
   "trip-ayutthaya/",
   "trip-chiangmai/",
   "trip-phuket/",
-  "assets/chars/chang.svg",
-  "assets/chars/mali.svg",
-  "assets/chars/tukkae.svg",
+  "assets/chars/chang.webp",
+  "assets/chars/mali.webp",
+  "assets/chars/tukkae.webp",
   "assets/common.js",
   "assets/data.js",
   "assets/icons/apple-touch-icon.png",

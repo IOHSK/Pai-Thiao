@@ -1,8 +1,8 @@
 // Pai Thiao 공용 기능: 언어 전환, 공손 어미(남성/여성), 진도 저장, 태국어 음성, 음성 인식, 도장
 const PT = (() => {
   // 캐릭터 그림: 같은 이름으로 덮어쓰거나 여기 파일 이름만 바꾸면 첫 화면과 수업 화면에 모두 반영된다
-  const CHARS = { mali: 'mali.svg', chang: 'chang.svg', tukkae: 'tukkae.svg' };
-  const charSrc = (who, base = '') => `${base}assets/chars/${CHARS[who]}?v=4`;
+  const CHARS = { mali: 'mali.webp', chang: 'chang.webp', tukkae: 'tukkae.webp' };
+  const charSrc = (who, base = '') => `${base}assets/chars/${CHARS[who]}?v=5`;
   const charImg = (who, base = '') => `<img src="${charSrc(who, base)}" alt="" width="120" height="120">`;
 
   const get = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };

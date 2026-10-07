@@ -39,7 +39,7 @@
 `assets/audio/manifest.js`를 만들고 `window.PT_AUDIO = { "ขอบคุณครับ": "../assets/audio/khop-khun-khrap.mp3" };` 형태로 적은 뒤, 각 HTML에서 common.js 앞에 불러오면 해당 문장은 녹음 파일로 재생된다. 키는 어미까지 붙은 완성된 태국어 문장이다(남성, 여성 따로).
 
 ## 캐릭터 그림 바꾸기
-`assets/chars/`의 mali.svg(샴고양이), chang.svg(코끼리), tukkae.svg(도마뱀). 새 그림(webp 등)을 넣고 `assets/common.js` 맨 위의 `CHARS`와 `index.html`의 그림 경로만 바꾸면 된다. 정사각형, 원형으로 잘려도 괜찮은 구도가 좋다.
+`assets/chars/`의 mali.webp(샴고양이), chang.webp(코끼리), tukkae.webp(도마뱀). 새 그림(webp 등)을 넣고 `assets/common.js` 맨 위의 `CHARS`와 `index.html`의 그림 경로만 바꾸면 된다. 정사각형, 원형으로 잘려도 괜찮은 구도가 좋다.
 
 ## 오프라인 저장과 홈 화면 앱
 `sw.js`가 사이트 전체를 휴대전화에 저장하고, `manifest.webmanifest`와 `assets/icons/`가 홈 화면 아이콘을 맡는다. 내용을 고쳐 다시 올릴 때는 `python3 gen/make_sw.py 5`처럼 숫자를 하나 올려 실행한다. 그래야 이미 저장해 둔 휴대전화에도 새 내용이 들어간다(사이트를 한 번 더 열면 바뀐다). 파일을 새로 추가했을 때도 같은 명령으로 저장 목록이 갱신된다.
