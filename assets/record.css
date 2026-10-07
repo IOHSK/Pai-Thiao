@@ -42,3 +42,4 @@ kbd{font:600 .8rem var(--sans);background:#fff;border:1px solid var(--line);bord
 @media (max-width:640px){.rec-grid{grid-template-columns:1fr}.rec-grid .row{flex-wrap:wrap}}
 
 .legend .long,.rec-list .dot.long{background:#A63D2F}.tag.long{background:#A63D2F;color:#fff}
+.legend .check,.rec-list .dot.check{background:#D9822B}.tag.check{background:#D9822B;color:#fff}
