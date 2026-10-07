@@ -1,5 +1,5 @@
 // Pai Thiao 오프라인 저장. 파일을 바꿔 올릴 때마다 VERSION 숫자를 올리면 휴대전화에 저장된 사이트가 새로 바뀐다.
-const VERSION = 'pai-thiao-v5';
+const VERSION = 'pai-thiao-v6';
 const FONTS = 'pai-thiao-fonts';
 const FILES = [
   "./",
@@ -17,6 +17,7 @@ const FILES = [
   "trip-ayutthaya/",
   "trip-chiangmai/",
   "trip-phuket/",
+  "assets/audio/manifest.js",
   "assets/chars/chang.webp",
   "assets/chars/mali.webp",
   "assets/chars/tukkae.webp",
@@ -57,6 +58,16 @@ self.addEventListener('fetch', e => {
     return;
   }
   if (url.origin !== location.origin) return;
+  // sw.js 자신과 녹음실은 저장하지 않고 늘 새로 받는다
+  if (url.pathname.endsWith('/sw.js') || url.pathname.includes('/record/') || /assets\/(record\.|vendor\/)/.test(url.pathname)) return;
+  // 녹음 목록(manifest.js)은 인터넷이 되면 늘 새것을, 안 되면 저장된 것을 쓴다
+  if (url.pathname.endsWith('assets/audio/manifest.js')) {
+    e.respondWith(caches.open(VERSION).then(c => {
+      const key = strip(req.url);
+      return fetch(req).then(res => { if (res.ok) c.put(key, res.clone()); return res; }).catch(() => c.match(key).then(hit => hit || Response.error()));
+    }));
+    return;
+  }
   // 사이트 파일: 저장된 것을 바로 보여 주고, 인터넷이 되면 뒤에서 새것으로 바꿔 둔다
   e.respondWith(caches.open(VERSION).then(async c => {
     const key = strip(req.url);

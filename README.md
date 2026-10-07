@@ -35,8 +35,10 @@
 ## 자리 표시
 문장 안의 `{P}`(평서 어미), `{Q}`(의문 어미), `{p}`/`{q}`(로마자 어미), `{k}`(한글 어미), `{I}`/`{i}`/`{ki}`("나")는 남성/여성 선택에 따라 바뀐다.
 
-## 녹음 파일 추가
-`assets/audio/manifest.js`를 만들고 `window.PT_AUDIO = { "ขอบคุณครับ": "../assets/audio/khop-khun-khrap.mp3" };` 형태로 적은 뒤, 각 HTML에서 common.js 앞에 불러오면 해당 문장은 녹음 파일로 재생된다. 키는 어미까지 붙은 완성된 태국어 문장이다(남성, 여성 따로).
+## 녹음실 (record/)
+`record/` 페이지에서 사이트의 태국어 소리를 사람 목소리로 녹음하거나 Gemini AI 목소리로 채운다. 첫 화면에는 링크가 없고 주소로만 들어간다(검색에도 안 잡힌다). 공손 어미가 붙는 말은 남성(ครับ)과 여성(ค่ะ, คะ)으로 따로 나오고, 남성 말은 남성 목소리, 여성 말은 여성 목소리로 만든다. 녹음은 그 브라우저(IndexedDB)에 남는다.
+
+다 만든 뒤 "zip 내려받기"를 누르고 zip을 저장소 맨 위에 풀어 올리면 된다. zip에는 `assets/audio/th/*.mp3`, `assets/audio/manifest.js`, 버전을 하나 올린 `sw.js`가 들어 있다. manifest의 키는 어미까지 붙은 완성된 태국어 문장, 값은 사이트 맨 위 기준 경로다(`"ขอบคุณครับ": "assets/audio/th/khop-khun-khrap-x1.mp3"`). 녹음이 있는 말은 녹음으로, 없는 말은 기기 음성으로 소리 나고, 천천히 듣기는 녹음을 0.75배로 늦춘다. 녹음실 파일(`record/`, `assets/record.*`, `assets/vendor/`)은 휴대전화 오프라인 저장에서 빠진다.
 
 ## 캐릭터 그림 바꾸기
 `assets/chars/`의 mali.webp(샴고양이), chang.webp(코끼리), tukkae.webp(도마뱀). 새 그림(webp 등)을 넣고 `assets/common.js` 맨 위의 `CHARS`와 `index.html`의 그림 경로만 바꾸면 된다. 정사각형, 원형으로 잘려도 괜찮은 구도가 좋다.

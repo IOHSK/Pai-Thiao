@@ -28,6 +28,8 @@ const PT = (() => {
     f: { '{P}': 'ค่ะ', '{Q}': 'คะ', '{p}': 'khâ', '{q}': 'khá', '{k}': '카', '{I}': 'ฉัน', '{i}': 'chǎn', '{ki}': '찬' }
   };
   const R = s => String(s).replace(/\{(P|Q|p|q|k|I|i|ki)\}/g, m => FORMS[getG()][m]);
+  // 남성/여성을 정해서 바꾸기 (녹음실에서 두 가지를 모두 만들 때 쓴다)
+  const Rg = (s, g) => String(s).replace(/\{(P|Q|p|q|k|I|i|ki)\}/g, m => FORMS[g][m]);
 
   function mountToggles(onChange) {
     const b = document.getElementById('lang');
@@ -63,8 +65,10 @@ const PT = (() => {
   const isSlow = () => get(SKEY, '0') === '1';
   const setSlow = v => put(SKEY, v ? '1' : '0');
 
-  // 태국어 음성. 녹음 파일은 assets/audio/manifest.js 에 PT_AUDIO = { "ขอบคุณครับ": "../assets/audio/khop-khun-khrap.mp3" } 형태로 추가
-  let voice = null;
+  // 태국어 음성. 녹음 파일은 녹음실(record/)에서 만든 assets/audio/manifest.js 에
+  // PT_AUDIO = { "ขอบคุณครับ": "assets/audio/th/khop-khun-khrap-x1.mp3" } 처럼 사이트 맨 위 기준 경로로 들어간다.
+  // 녹음이 있는 말은 녹음으로, 없는 말은 기기 음성으로 소리 난다.
+  let voice = null, clip = null;
   const pickVoice = () => {
     if (!('speechSynthesis' in window)) return;
     const vs = speechSynthesis.getVoices();
@@ -74,8 +78,16 @@ const PT = (() => {
   function speak(text, rate) {
     const t = R(text);
     const map = window.PT_AUDIO || {};
-    if (map[t]) { new Audio(map[t]).play(); return true; }
+    if (map[t]) {
+      if ('speechSynthesis' in window) speechSynthesis.cancel();
+      if (clip) clip.pause();
+      clip = new Audio(BASE + map[t]);
+      clip.playbackRate = (rate ? rate < 0.7 : isSlow()) ? 0.75 : 1;
+      clip.play().catch(() => {});
+      return true;
+    }
     if (!('speechSynthesis' in window)) return false;
+    if (clip) clip.pause();
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(t);
     u.lang = 'th-TH'; if (voice) u.voice = voice;
@@ -157,5 +169,5 @@ const PT = (() => {
       <text x="50" y="58" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="${fs.toFixed(1)}" font-weight="700" fill="${c}">${name.toUpperCase()}</text>
       ${dots}</svg>`;
   }
-  return { paintOffline, charSrc, charImg, getLang, L, R, getG, applyI18n, mountToggles, getStamp, setStamp, speak, isSlow, setSlow, canListen, listen, close, playIcon, stampSVG, hasVoice: () => !!voice };
+  return { BASE, Rg, FORMS, paintOffline, charSrc, charImg, getLang, L, R, getG, applyI18n, mountToggles, getStamp, setStamp, speak, isSlow, setSlow, canListen, listen, close, playIcon, stampSVG, hasVoice: () => !!voice };
 })();
