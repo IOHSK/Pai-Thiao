@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=5">
-<link rel="stylesheet" href="../assets/record.css?v=5">
+<link rel="stylesheet" href="../assets/record.css?v=6">
 </head>
 <body>
 <div class="wrap">
@@ -23,7 +23,7 @@
     <ul class="rec-tips">
       <li>사람 목소리로 녹음해도 되고 AI 목소리로 채워도 돼요. AI로 저장한 말도 나중에 녹음하면 사람 목소리로 바뀌어요.</li>
       <li>공손 어미가 붙는 말은 남성(<span class="th">ครับ</span>)과 여성(<span class="th">ค่ะ</span>, <span class="th">คะ</span>) 두 가지로 따로 나와요. 사이트는 노란 버튼으로 고른 어미에 맞는 소리를 들려줘요. 남성 말은 남성 목소리로, 여성 말은 여성 목소리로 맞추면 자연스러워요.</li>
-      <li>태국어는 성조가 뜻을 바꿔요. AI 목소리는 저장하기 전에 꼭 들어 보세요. 로마자 성조 표기(à â á ǎ)를 AI에게 함께 전하면 성조가 더 정확해져요.</li>
+      <li>태국어는 성조가 뜻을 바꿔요. AI 목소리는 저장하기 전에 꼭 들어 보세요. 성조가 자꾸 틀리면 아래 설정에서 로마자 성조 표기를 AI에게 함께 전해 보세요.</li>
       <li>사이트의 천천히 듣기는 녹음을 0.75배로 늦춰 들려줘요. 녹음은 보통 빠르기나 조금 천천히로 하면 돼요.</li>
       <li>앞뒤 빈 소리와 음량은 도구가 자동으로 맞춰요.</li>
       <li>단축키: <kbd>스페이스</kbd> 녹음 시작과 끝, <kbd>P</kbd> 다시 듣기, <kbd>→</kbd> 다음, <kbd>←</kbd> 이전, <kbd>A</kbd> AI 목소리 만들기, <kbd>S</kbd> AI 목소리 저장</li>
@@ -53,7 +53,7 @@
           <select id="model"></select>
           <small>모델마다 하루 한도와 분당 한도가 따로 있어요. 한 모델이 하루 한도에 걸리면 다른 모델로 바꾸고 이어서 채우면 돼요. 한도는 태평양 시간 자정(인디애나 새벽 3시쯤)에 다시 채워져요.</small>
         </label>
-        <label class="check"><input type="checkbox" id="romHint" checked> 로마자 성조 표기도 AI에게 전하기</label>
+        <label class="check"><input type="checkbox" id="romHint"> 로마자 성조 표기도 AI에게 전하기 (시험용. 성조가 자꾸 틀릴 때만 켜요)</label>
         <label class="check"><input type="checkbox" id="hints" checked> 말마다 말투 안내(낱말, 질문, 성조 등)도 AI에게 전하기</label>
       </div>
       <details class="rec-help"><summary>API 키 받는 법 (한 번만)</summary>
@@ -70,13 +70,14 @@
       <div class="row" style="justify-content:space-between">
         <strong id="count"></strong>
         <span class="row">
-          <select id="filter" aria-label="상태"><option value="all">전체</option><option value="todo" selected>아직 안 한 것</option><option value="ai">AI로 한 것</option><option value="mic">녹음한 것</option></select>
+          <select id="filter" aria-label="상태"><option value="all">전체</option><option value="todo" selected>아직 안 한 것</option><option value="ai">AI로 한 것</option><option value="mic">녹음한 것</option><option value="long">너무 긴 AI 소리</option></select>
           <select id="gender" aria-label="어미"><option value="all">모든 어미</option><option value="m">남성 (ครับ)</option><option value="f">여성 (ค่ะ)</option><option value="n">어미 없음</option></select>
           <select id="stretch" aria-label="구간"></select>
         </span>
       </div>
       <div class="rec-bar"><span id="barMic"></span><span id="barAi"></span><span id="barPub"></span></div>
-      <small class="legend"><i class="mic"></i>녹음 <i class="ai"></i>AI <i class="pub"></i>이미 사이트에 올라간 것</small>
+      <small class="legend"><i class="mic"></i>녹음 <i class="ai"></i>AI <i class="pub"></i>이미 사이트에 올라간 것 <i class="long"></i>너무 긴 AI 소리</small>
+      <div class="row" style="margin-top:.6rem"><button class="btn small" id="purge" hidden></button></div>
     </section>
 
     <section class="panel rec-item" aria-live="polite">
@@ -100,7 +101,7 @@
 
     <section class="panel rec-batch">
       <h2>남은 말 AI로 한꺼번에 채우기</h2>
-      <p>위에서 고른 구간과 어미 안에서, 아직 녹음도 AI도 없는 말을 차례로 만들어 저장해요. 남성 말은 남성 목소리, 여성 말은 여성 목소리로 만들어요. 분당 한도에 맞춰 천천히 진행하고, 하루 한도에 걸리면 멈춰요. 중간에 멈춰도 만든 것은 남아요. 다 채운 뒤 몇 개를 골라 들어 보고, 성조가 이상한 것만 다시 만들면 돼요.</p>
+      <p>위에서 고른 구간과 어미 안에서, 아직 녹음도 AI도 없는 말을 차례로 만들어 저장해요. 남성 말은 남성 목소리, 여성 말은 여성 목소리로 만들어요. 만든 소리가 말에 비해 너무 길면(AI가 지시문을 읽은 경우) 저장하지 않고 다시 만들고, 세 번 모두 길면 그 말은 건너뛰어요. 분당 한도에 맞춰 천천히 진행하고, 하루 한도에 걸리면 멈춰요. 중간에 멈춰도 만든 것은 남아요. 다 채운 뒤 몇 개를 골라 들어 보고, 성조가 이상한 것만 다시 만들면 돼요.</p>
       <div class="row"><button class="btn go" id="batch">채우기 시작</button><button class="btn" id="batchStop" disabled>멈추기</button><span id="batchMsg"></span></div>
     </section>
 
@@ -129,6 +130,6 @@
 <script src="../assets/side-lessons.js?v=5"></script>
 <script src="../assets/vendor/lame.min.js"></script>
 <script src="../assets/vendor/jszip.min.js"></script>
-<script src="../assets/record.js?v=5"></script>
+<script src="../assets/record.js?v=6"></script>
 </body>
 </html>

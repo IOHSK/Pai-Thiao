@@ -40,3 +40,5 @@ kbd{font:600 .8rem var(--sans);background:#fff;border:1px solid var(--line);bord
 .rec-list .th{font-size:1.1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
 .rec-list .g{font-size:.75rem;color:var(--muted);flex:0 0 auto}
 @media (max-width:640px){.rec-grid{grid-template-columns:1fr}.rec-grid .row{flex-wrap:wrap}}
+
+.legend .long,.rec-list .dot.long{background:#A63D2F}.tag.long{background:#A63D2F;color:#fff}

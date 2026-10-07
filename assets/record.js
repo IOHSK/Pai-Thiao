@@ -33,13 +33,19 @@ function guessKind(th, rom, meaning, toneLesson) {
   return words <= 1 ? 'word' : 'phrase';
 }
 const KIND_KO = { tone: '성조 낱말: 성조 하나를 정확하게', word: '낱말 하나: 또렷하게', phrase: '문장: 자연스럽게', question: '질문: 묻는 말투로' };
+// AI에게 주는 말투 안내. 지시문이 길면 Gemini가 지시문까지 소리 내어 읽어 버리므로 아주 짧게 둔다.
 const KIND_EN = {
-  tone: 'This is a single Thai word from a lesson on the five tones. The tone is the whole point, so make it unmistakable.',
-  word: 'This is a single Thai word or short expression. Say it clearly, the way a teacher models it for a learner.',
-  phrase: 'Say this Thai phrase naturally and clearly, as a friendly native speaker.',
-  question: 'This is a Thai question. Say it as a natural, polite question.'
+  tone: 'this Thai word with a very clear',
+  word: 'this Thai word clearly, like a teacher',
+  phrase: 'this Thai phrase naturally',
+  question: 'this Thai question as a polite question'
 };
 const TONE_EN = { mid: 'mid (level)', low: 'low', falling: 'falling', high: 'high', rising: 'rising' };
+// 기대 길이: 로마자 음절(띄어쓰기와 -로 나뉜 조각) 수로 어림한다. 로마자가 없으면 태국 글자 수로.
+// 이보다 훨씬 길면 AI가 지시문을 읽었거나 딴말을 한 것이다.
+const syllables = it => Math.max(1, it.rom ? it.rom.split(/[\s-]+/).filter(Boolean).length : Math.ceil(it.text.length / 3));
+const maxDur = it => 1.6 + 0.6 * syllables(it);
+const tooLong = c => { if (!c || c.source !== 'ai') return false; const it = ITEMS.find(i => i.key === c.key); return !!it && c.dur > maxDur(it); };
 
 const GROUPS = PT_STRETCHES.filter(s => s.open).concat(typeof PT_SIDE !== 'undefined' ? PT_SIDE.filter(s => s.open) : []);
 const groupLabel = s => typeof s.n === 'number' ? `${s.n}구간` : `부록 ${s.ko}`;
@@ -217,24 +223,17 @@ async function toggleRec() {
 
 /* ---------- Gemini AI 목소리 ---------- */
 const API = 'https://generativelanguage.googleapis.com/v1beta';
-const SPEED = { slow: 'Speak slowly and very clearly, at about seventy percent of normal speed.', bitslow: 'Speak a little slower than normal, clearly.', normal: 'Speak at a natural, relaxed pace.' };
 const genderOf = it => it.g || $('neutral').value;
 const voiceFor = it => genderOf(it) === 'm' ? $('voiceM').value : $('voiceF').value;
+const SPEED = { slow: 'slowly and very clearly', bitslow: 'a little slowly and clearly', normal: 'at a natural pace' };
+// Gemini TTS 권장 형식: "말투 안내: 읽을 말". 콜론 뒤만 읽도록 짧게 쓴다. simple은 다시 시도할 때 쓰는 가장 짧은 형식.
 function prompt(it, opts = {}) {
-  const parts = ['Speak in standard Central Thai, as a native speaker from Bangkok. Thai is tonal and the tone changes the meaning, so pronounce every syllable with its correct tone. Keep final stops (-p, -t, -k) unreleased, as Thai speakers do.'];
-  const g = genderOf(it);
-  if (it.g === 'm') parts.push('The speaker is a man, so the sentence uses the male polite particle ครับ (khráp, high tone) and ผม for "I". Say khráp clearly, not swallowed.');
-  else if (it.g === 'f') parts.push('The speaker is a woman, so the sentence uses the female polite particles: ค่ะ (khâ, falling tone) after statements and คะ (khá, high tone) after questions, and ฉัน for "I". Keep these two tones distinct.');
-  else parts.push(g === 'm' ? 'The speaker is a man.' : 'The speaker is a woman.');
-  parts.push(SPEED[$('speed').value]);
-  if ($('hints').checked && !opts.preview) {
-    parts.push(KIND_EN[it.kind]);
-    if (it.kind === 'tone') parts.push(`This word has the ${TONE_EN[toneOf(it.rom)]} tone.`);
-  }
-  if ($('romHint').checked && it.rom && !opts.preview)
-    parts.push(`Pronunciation guide in tone-marked romanization: "${it.rom}". In this guide, a grave accent (à) marks the low tone, a circumflex (â) falling, an acute accent (á) high, a caron (ǎ) rising, and no mark the mid tone. Use the guide only for pronunciation; never read the romanization aloud.`);
-  parts.push('Do not add any other words, and do not translate. Say exactly this Thai text:');
-  return parts.join(' ') + '\n' + it.text;
+  const who = genderOf(it) === 'm' ? 'as a Thai man' : 'as a Thai woman';
+  if (opts.simple) return `Say in Bangkok Thai, ${who}: ${it.text}`;
+  let what = 'this';
+  if ($('hints').checked && !opts.preview) what = it.kind === 'tone' ? `${KIND_EN.tone} ${TONE_EN[toneOf(it.rom)]} tone` : KIND_EN[it.kind];
+  const guide = $('romHint').checked && it.rom && !opts.preview ? ` (tones as in ${it.rom}, do not read this guide)` : '';
+  return `Say ${what}${guide}, ${SPEED[$('speed').value]}, in standard Bangkok Thai with correct tones, ${who}: ${it.text}`;
 }
 function parseRetry(err) {
   const d = (err && err.details || []).find(x => x['@type'] && x['@type'].includes('RetryInfo'));
@@ -242,7 +241,17 @@ function parseRetry(err) {
   return isNaN(s) ? 20 : Math.ceil(s) + 1;
 }
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+// 길이를 보고 이상하면 가장 짧은 지시문으로 두 번 더 만든다. 그래도 길면 저장하지 않는다.
 async function synth(it, opts = {}) {
+  if (opts.preview) return synthOnce(it, opts);
+  for (let k = 0; k < 3; k++) {
+    const out = await synthOnce(it, { ...opts, simple: k > 0 });
+    if (out.dur <= maxDur(it)) return out;
+    msg(`AI 소리가 ${out.dur.toFixed(1)}초로 너무 길어요(지시문을 읽은 것 같아요). 다시 만들어요...`);
+  }
+  const e = new Error(`"${it.text}"는 세 번 만들어도 소리가 너무 길었어요. 이 말은 건너뛰어요. 직접 녹음하거나 나중에 다시 해 보세요.`); e.tooLong = true; throw e;
+}
+async function synthOnce(it, opts = {}) {
   const key = settings.key;
   if (!key) throw new Error('먼저 위에서 Gemini API 키를 저장해 주세요.');
   const model = $('model').value, voice = opts.voice || voiceFor(it);
@@ -303,11 +312,12 @@ const view = () => ITEMS.filter(it => {
   if (f === 'todo') return !c && !PUB[it.key];
   if (f === 'ai') return c && c.source === 'ai';
   if (f === 'mic') return c && c.source === 'mic';
+  if (f === 'long') return tooLong(c);
   return true;
 });
 let VIEW = [];
 const cur = () => VIEW[idx] || ITEMS[0];
-const stateOf = it => CLIPS[it.key] ? CLIPS[it.key].source : PUB[it.key] ? 'pub' : '';
+const stateOf = it => tooLong(CLIPS[it.key]) ? 'long' : CLIPS[it.key] ? CLIPS[it.key].source : PUB[it.key] ? 'pub' : '';
 const escH = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 function msg(t, kind = '') { const m = $('msg'); m.textContent = t; m.className = 'feedback ' + kind; }
 async function save(c) { await putClip(c); CLIPS[c.key] = c; renderCounts(); renderList(); renderItem(); }
@@ -317,7 +327,9 @@ function renderCounts() {
   const mic = ITEMS.filter(i => CLIPS[i.key] && CLIPS[i.key].source === 'mic').length;
   const ai = ITEMS.filter(i => CLIPS[i.key] && CLIPS[i.key].source === 'ai').length;
   const pub = ITEMS.filter(i => !CLIPS[i.key] && PUB[i.key]).length;
-  $('count').textContent = `전체 ${total}개 중 ${mic + ai + pub}개 준비됨 (녹음 ${mic}, AI ${ai}, 올라간 것 ${pub})`;
+  const bad = ITEMS.filter(i => tooLong(CLIPS[i.key])).length;
+  $('count').textContent = `전체 ${total}개 중 ${mic + ai + pub}개 준비됨 (녹음 ${mic}, AI ${ai}, 올라간 것 ${pub})` + (bad ? `. 이 중 너무 긴 AI 소리 ${bad}개` : '');
+  $('purge').hidden = !bad; $('purge').textContent = `너무 긴 AI 소리 ${bad}개 지우기`;
   $('barMic').style.width = (mic / total * 100) + '%'; $('barAi').style.width = (ai / total * 100) + '%'; $('barPub').style.width = (pub / total * 100) + '%';
 }
 function renderItem() {
@@ -331,7 +343,7 @@ function renderItem() {
   $('pos').textContent = `${idx + 1} / ${VIEW.length}`;
   $('gtag').className = 'tag g-' + (it.g || 'n'); $('gtag').textContent = G_KO[it.g];
   $('status').className = 'tag ' + st;
-  $('status').textContent = pending && pending.key === it.key ? 'AI 목소리 (아직 저장 안 함)' : st === 'mic' ? '녹음됨' : st === 'ai' ? `AI (${CLIPS[it.key].voice})` : st === 'pub' ? '사이트에 올라감' : '아직 없음';
+  $('status').textContent = pending && pending.key === it.key ? 'AI 목소리 (아직 저장 안 함)' : st === 'mic' ? '녹음됨' : st === 'long' ? `너무 긴 AI 소리 (${CLIPS[it.key].dur.toFixed(1)}초)` : st === 'ai' ? `AI (${CLIPS[it.key].voice})` : st === 'pub' ? '사이트에 올라감' : '아직 없음';
   $('text').textContent = it.text;
   $('rom').textContent = it.rom;
   $('ctx').textContent = it.ctx.map(c => `${groupLabel(c.s)} ${c.n}과 ${c.name}, ${c.where}`).join(' / ');
@@ -380,7 +392,7 @@ async function batch() {
   const todo = ITEMS.filter(it => inScope(it) && !CLIPS[it.key] && !PUB[it.key]);
   if (!todo.length) { $('batchMsg').textContent = '고른 범위에 채울 말이 없어요.'; return; }
   batchOn = true; $('batch').disabled = true; $('batchStop').disabled = false;
-  let done = 0;
+  let done = 0; const skipped = [];
   for (const it of todo) {
     if (!batchOn) break;
     $('batchMsg').textContent = `${done + 1} / ${todo.length}: ${it.text}`;
@@ -390,12 +402,13 @@ async function batch() {
       await save({ key: it.key, text: it.text, source: 'ai', ...out, at: Date.now() });
       done++;
     } catch (e) {
+      if (e.tooLong) { skipped.push(it.text); continue; }
       $('batchMsg').textContent = `${done}개를 채우고 멈췄어요. ${e.message}`;
       batchOn = false; break;
     }
     const wait = 6500 - (Date.now() - t0); if (wait > 0 && batchOn) await sleep(wait);   // 분당 10개 한도에 맞춤
   }
-  if (batchOn) $('batchMsg').textContent = `${done}개를 채웠어요.`;
+  if (batchOn) $('batchMsg').textContent = `${done}개를 채웠어요.` + (skipped.length ? ` 소리가 계속 너무 길어서 ${skipped.length}개는 건너뛰었어요: ${skipped.join(', ')}` : '');
   batchOn = false; $('batch').disabled = false; $('batchStop').disabled = true; refilter();
 }
 
@@ -419,7 +432,8 @@ async function bumpSW(paths) {
   } catch (e) { return null; }
 }
 async function exportZip() {
-  const keys = Object.keys(CLIPS);
+  const keys = Object.keys(CLIPS).filter(k => !tooLong(CLIPS[k]));
+  const skippedLong = Object.keys(CLIPS).length - keys.length;
   if (!keys.length) { $('exportMsg').textContent = '아직 저장한 소리가 없어요.'; return; }
   $('export').disabled = true; $('exportMsg').textContent = 'zip을 만들고 있어요...';
   const zip = new JSZip(), manifest = { ...PUB };
@@ -435,7 +449,7 @@ async function exportZip() {
   if (sw) zip.file('sw.js', sw.text);
   const blob = await zip.generateAsync({ type: 'blob' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'pai-thiao-audio.zip'; a.click();
-  $('exportMsg').textContent = `새 소리 ${keys.length}개, 목록 전체 ${Object.keys(sorted).length}개를 담았어요.` +
+  $('exportMsg').textContent = `새 소리 ${keys.length}개, 목록 전체 ${Object.keys(sorted).length}개를 담았어요.` + (skippedLong ? ` 너무 긴 AI 소리 ${skippedLong}개는 뺐어요.` : '') +
     (sw ? ` sw.js는 v${sw.v}로 올렸어요.` : ' sw.js를 읽지 못해서 넣지 못했어요. 올린 뒤 python3 gen/make_sw.py로 버전을 올려 주세요.');
   $('export').disabled = false;
 }
@@ -451,7 +465,7 @@ async function init() {
   if (settings.neutral) $('neutral').value = settings.neutral;
   if (settings.speed) $('speed').value = settings.speed;
   if (settings.hints === false) $('hints').checked = false;
-  if (settings.romHint === false) $('romHint').checked = false;
+  if (settings.romHint === true) $('romHint').checked = true;
   if (settings.key) $('key').placeholder = '저장된 키가 있어요';
   $('stretch').innerHTML = '<option value="all">모든 구간</option>' + GROUPS.filter(s => ITEMS.some(i => i.group === String(s.n))).map(s => `<option value="${s.n}">${groupLabel(s)}</option>`).join('');
   try { await openDB(); (await allClips() || []).forEach(c => { CLIPS[c.key] = c; }); }
@@ -488,6 +502,12 @@ async function init() {
   $('prev').onclick = () => move(-1); $('next').onclick = () => move(1);
   $('batch').onclick = batch; $('batchStop').onclick = () => { batchOn = false; $('batchMsg').textContent = '지금 것까지 하고 멈춰요...'; };
   $('export').onclick = exportZip;
+  $('purge').onclick = async () => {
+    const bad = Object.values(CLIPS).filter(tooLong);
+    if (!bad.length || !confirm(`길이가 비정상적으로 긴 AI 소리 ${bad.length}개를 지울까요? 지운 말은 "아직 안 한 것"으로 돌아가요.`)) return;
+    for (const c of bad) { await delClip(c.key); delete CLIPS[c.key]; }
+    refilter(); renderCounts(); msg(`${bad.length}개를 지웠어요. 이제 채우기를 다시 하면 돼요.`, 'ok');
+  };
   document.addEventListener('keydown', e => {
     if (e.target.closest('input, select, textarea, summary')) return;
     if (e.code === 'Space') { e.preventDefault(); toggleRec(); }
@@ -499,5 +519,5 @@ async function init() {
   });
 }
 init();
-window.__REC = { ITEMS, prompt, bumpSW, exportZip, CLIPS: () => CLIPS };   // 시험용
+window.__REC = { ITEMS, maxDur, tooLong, prompt, bumpSW, exportZip, CLIPS: () => CLIPS };   // 시험용
 })();
